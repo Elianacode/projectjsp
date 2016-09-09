@@ -5,22 +5,19 @@
  */
 package com.prjhuellvotweb.controlador;
 
-import com.prjhuellvotweb.DAO.DAOCategoria;
 import com.prjhuellvotweb.DAO.DAOVoto;
 import com.prjhuellvotweb.modelo.Voto;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.xml.ws.spi.http.HttpContext;
 
 /**
  *
- * @author SENA
+ * @author Rocio Eliana Marquez Olarte
  */
 public class ServletVoto extends HttpServlet {
 
@@ -53,7 +50,7 @@ public class ServletVoto extends HttpServlet {
                 } else {
                     Voto v = new Voto(idU, idO);
                     DAOVoto daov = new DAOVoto();
-                    if (daov.votar(v) == true) {
+                    if (daov.votarValid(v) == true) {
                         response.sendRedirect("index.jsp");
                     } else {
                         response.setStatus(400);

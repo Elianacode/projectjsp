@@ -31,8 +31,10 @@
             </div>
             <div class="row center valign-wrapper ">
                 <div class="col s12 m12 l12" style="margin-top:6%">
+                    <div class="error">
                     <h4>Perdone las molestias!</h4>
                     <p>No se encuentra conectado con el servidor.</p>
+                    </div>
                     <a href="index.jsp" <button class="waves-effect waves-light btn teal darken-2 hoverable">Click aqui para ir al inicio.<i class="material-icons right">home</i></button></a>
                 </div>
             </div>

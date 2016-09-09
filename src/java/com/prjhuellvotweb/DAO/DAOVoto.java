@@ -27,6 +27,29 @@ public class DAOVoto {
     ResultSet rs;
     ArrayList list = new ArrayList();
 
+    public boolean votarValid(Voto v) {
+        try {
+            Conectar();
+            sql = "CALL INSERTVOTO (?,?)";
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, v.getIdUsuario());
+            pst.setString(2, v.getIdOpcion());
+            if (pst.executeUpdate() == 1) {
+                System.out.println("Usted ha votado con exito !");
+
+            } else {
+                System.out.println("Han ocurrido errores durante el voto");
+            }
+            pst.close();
+            con.close();
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("Error al votar por favor verifique, " + ex);
+        }
+        return false;
+    }
+    
+    //Votar sin procedimiento que valida registro en la base de datos
     public boolean votar(Voto v) {
         try {
             Conectar();

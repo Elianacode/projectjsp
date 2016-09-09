@@ -4,7 +4,11 @@
     Author     : Eliana Marquez,  Estiven Mazo , Sergio Buitrago
 --%>
 <% HttpSession sessionOk = request.getSession();
-    if (sessionOk.getAttribute("admin") != null) {%>
+    if (sessionOk.getAttribute("admin") == null) {
+        sessionOk.invalidate();
+        sessionOk = request.getSession();
+        response.sendRedirect("index.jsp");
+    }else{%>
 
 <%@page import="com.prjhuellvotweb.DAO.DAOCategoria"%>
 <%@page import="com.prjhuellvotweb.modelo.Voto"%>
@@ -280,10 +284,10 @@
         </footer>
     </div>
 </body>
-<%} else {
-        sessionOk.invalidate();
-        sessionOk = request.getSession();
-        response.sendRedirect("index.jsp");
-    }%>
-
+<%} %>
+<script type="text/javascript">
+        if (history.forward(1)) {
+            location.replace(location.reload());
+        }
+    </script> 
 </html>

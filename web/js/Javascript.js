@@ -13,7 +13,7 @@ function carga() {
                 if (contador_minutos <= 0 && contador_segundos <= 1) {
                     clearInterval(cron);
                     contador_segundos = 0;
-                    window.close();
+                    window.close();                      
                     //swal({title: "Lo setimos", type: "warning", text: "Su sesíon ha terminado,intente acceder mas tarde.", allowEscapeKey: false, confirmButtonText: "Aceptar"});
                     window.location.assign('index.jsp');
 

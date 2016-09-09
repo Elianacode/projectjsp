@@ -21,7 +21,7 @@
 
         <title>Votacion</title>
         <!-- icono -->
-        <link rel="shortcut icon" type="image/x-icon" href="/iC0.png" />
+        <link rel="shortcut icon" type="image/x-icon" href="Multimedia/iC0.png" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="js/Javascript.js" type="text/javascript"></script>
         <script src="js/Validaciones.js" type="text/javascript"></script>
