@@ -45,7 +45,7 @@ public class ServletTabOpcion extends HttpServlet {
                 ArrayList<Opcion> listO = new ArrayList();
                 listO = daoO.consultarAllOpcion();
                 if (listO != null) {
-                    out.println("<table class=\"tblOpcion\">"
+                    out.println("<table class=\"tblOpcion responsive-table\">"
                             + "<thead><tr>"
                             + "<th data-field=\"id\">Codigo</th>"
                             + "<th data-field=\"op\">Opción</th>"

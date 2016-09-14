@@ -109,7 +109,7 @@ public final class Administrar_jsp extends org.apache.jasper.runtime.HttpJspBase
                     //int totalVotos = v2.getIdUsuario();
                     //String nombreopcion = v2.getIdOpcion();
                     //System.out.println("nombre:" + nombreopcion + "total votos:" + totalVotos);
-                    data.setValue(tot, num,num + "=" + tot);
+                    data.setValue(tot, num+". "+nom.toUpperCase()+"",num + "=" + tot);
                     //data.setValue(totalVotos, nombreopcion, nombreopcion + "= " + totalVotos);
                 }
 
@@ -117,9 +117,9 @@ public final class Administrar_jsp extends org.apache.jasper.runtime.HttpJspBase
                 // data.setValue(rs.getInt(2), rs.getString("nombreO"), rs.getString("nombreO") + "= " + rs.getInt(2));
                 // }
                 JFreeChart grafico = ChartFactory.createBarChart3D("ESTADISTICAS VOTOS PROYECTOS 2016", "Nombre Proyecto ", "Total votos por proyecto", data, PlotOrientation.VERTICAL, true, true, true);
-                response.setContentType("image/JPEG");
+                response.setContentType("text/html;charset=UTF-8");
                 OutputStream salida = response.getOutputStream();
-                ChartUtilities.writeChartAsJPEG(salida, grafico, 1000, 500);//ANCHO ,LARGO
+                ChartUtilities.writeChartAsJPEG(salida, grafico, 1300, 600);//ANCHO ,LARGO
                 //ChartFrame F = new ChartFrame("ESTADISTICAS VOTOS PROYECTOS 2016", grafico);
                 //F.setSize(1000,600);
                 //F.setLocationRelativeTo(null);

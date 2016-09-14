@@ -23,6 +23,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
+         <meta http-equiv="refresh" content="920">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
         <META HTTP-EQUIV="Cache-Control" CONTENT="no-store">
         <title>Huellvot</title>
@@ -65,11 +67,11 @@
     <div class="container">
         <nav>
             <div class="nav-wrapper teal darken-2">
-                <a class="brand-logo right logo hoverable"><img src="../Multimedia/logosena.PNG" width="55" height="55" ></a>
+                <a class="brand-logo right  hoverable"><img src="../Multimedia/logosena.PNG" width="55" height="55" ></a>
                 <a class="brand-logo center">Huellvot</a>
                 <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="hide-on-med-and-down">
-                    <li><a class="tooltipped" data-tooltip="Inicio"><img src="../Multimedia/iC0.png" width="45" height="55" ></a></li>
+                    <li><a class="tooltipped logo" data-tooltip="Inicio"><img src="../Multimedia/iC0.png" width="45" height="55" ></a></li>
                     <li><a class="showUser tooltipped " data-tooltip="Administrar Usuarios">Usuarios</a></li>
                     <li><a class="showOp tooltipped " data-tooltip="Administrar Opciones">Opciones</a></li>
                     <li><a class="showRep tooltipped " data-tooltip="Generar reportes">Reportes</a></li>
@@ -277,8 +279,8 @@
             <div class="footer-copyright">
                 <div class="container">
                     © 2016 Copyright Huellvot(Version 1.0)
-                    <a class="right" href="https://www.twitter.com" target="_blank"><img class="hoverable circle" src="Multimedia/twitterLogo.png" width="45" height="45" style="padding: 5px"></a>
-                    <a class="right" href="https://www.facebook.com" target="_blank"><img class="hoverable circle" src="Multimedia/facebook.png" width="45" height="45" style="padding: 5px"></a>
+                    <a class="right" href="https://twitter.com/HuellVot" target="_blank"><img class="hoverable circle" src="Multimedia/twitterLogo.png" width="45" height="45" style="padding: 5px"></a>
+                    <a class="right" href="https://www.facebook.com/huellvot.huellvot" target="_blank"><img class="hoverable circle" src="Multimedia/facebook.png" width="45" height="45" style="padding: 5px"></a>
                 </div>
             </div>
         </footer>

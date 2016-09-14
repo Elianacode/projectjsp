@@ -5,57 +5,75 @@
  */
 package com.prjhuellvotweb.modelo;
 
+import java.sql.Date;
+
 /**
  *
  * @author Eliana Marquez Olarte
  */
 public class Configuracion {
-    private String sexo;
-    private String categoria;
-    private String ficha;
-    private String opcion;
-    private String imagen;
-    
-    
-    public String getSexo() {
-        return sexo;
+    private String sexoConfig;
+    private String categoriaConfig;
+    private String fichaConfig;
+    private String imagenConfig;
+    private String descripcionConfig;
+    private Date fechainicioConfig;
+    private Date fechafinConfig;
+
+    public String getSexoConfig() {
+        return sexoConfig;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public void setSexoConfig(String sexoConfig) {
+        this.sexoConfig = sexoConfig;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public String getCategoriaConfig() {
+        return categoriaConfig;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setCategoriaConfig(String categoriaConfig) {
+        this.categoriaConfig = categoriaConfig;
     }
 
-    public String getFicha() {
-        return ficha;
+    public String getFichaConfig() {
+        return fichaConfig;
     }
 
-    public void setFicha(String ficha) {
-        this.ficha = ficha;
+    public void setFichaConfig(String fichaConfig) {
+        this.fichaConfig = fichaConfig;
     }
 
-    public String getOpcion() {
-        return opcion;
+    public String getImagenConfig() {
+        return imagenConfig;
     }
 
-    public void setOpcion(String opcion) {
-        this.opcion = opcion;
+    public void setImagenConfig(String imagenConfig) {
+        this.imagenConfig = imagenConfig;
     }
 
-    public String getImagen() {
-        return imagen;
+    public String getDescripcionConfig() {
+        return descripcionConfig;
     }
 
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
+    public void setDescripcionConfig(String descripcionConfig) {
+        this.descripcionConfig = descripcionConfig;
     }
-    
+
+    public Date getFechainicioConfig() {
+        return fechainicioConfig;
+    }
+
+    public void setFechainicioConfig(Date fechainicioConfig) {
+        this.fechainicioConfig = fechainicioConfig;
+    }
+
+    public Date getFechafinConfig() {
+        return fechafinConfig;
+    }
+
+    public void setFechafinConfig(Date fechafinConfig) {
+        this.fechafinConfig = fechafinConfig;
+    }
     
 }

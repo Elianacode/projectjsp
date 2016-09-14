@@ -38,6 +38,15 @@
                     <a href="index.jsp" <button class="waves-effect waves-light btn teal darken-2 hoverable">Click aqui para ir al inicio.<i class="material-icons right">home</i></button></a>
                 </div>
             </div>
+            <footer class="page-footer teal darken-2">            
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2016 Copyright Huellvot(Version 1.0)
+                    <a class="right" href="https://twitter.com/HuellVot" target="_blank"><img class="hoverable circle" src="Multimedia/twitterLogo.png" width="45" height="45" style="padding: 5px"></a>
+                    <a class="right" href="https://www.facebook.com/huellvot.huellvot" target="_blank"><img class="hoverable circle" src="Multimedia/facebook.png" width="45" height="45" style="padding: 5px"></a>
+                </div>
+            </div>
+        </footer>
         </div>
         <script language="Javascript">
             <!-- Begin

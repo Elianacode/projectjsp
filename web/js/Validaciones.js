@@ -640,7 +640,7 @@ function actualizarO() {
             $("#descriO1").val("");
         },
         success: function () {
-            swal({title: "Resultado:", text: "Opcion registrada.", timer: 4000, type: "success", showConfirmButton: false, allowEscapeKey: false});
+            swal({title: "Resultado:", text: "Opcion actualizada.", timer: 4000, type: "success", showConfirmButton: false, allowEscapeKey: false});
             tablaOpcion();
         }
     }).done(function () {
@@ -801,7 +801,7 @@ $(document).ready(function () {
 
                     var object = eval(msj);
                     var x = object[0].v;
-                    var y = object[0].y;
+                    var y = object[0].y; 
                     var datos = {
                         type: "pie",
                         data: {

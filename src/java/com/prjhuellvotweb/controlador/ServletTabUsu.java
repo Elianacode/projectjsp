@@ -45,7 +45,7 @@ public class ServletTabUsu extends HttpServlet {
                 listU = daoU.consultarAllUsuarios();
                 if (listU != null) {
 
-                    out.println("<table class=\"tblUsuario\">"
+                    out.println("<table class=\"tblUsuario responsive-table\">"
                             + "<thead><tr>"
 //                            + "<th data-field=\"id\">ID</th>"
                             + "<th data-field=\"nombre\">Nombre</th>"

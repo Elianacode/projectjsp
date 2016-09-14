@@ -16,10 +16,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="refresh" content="120">
+        <meta http-equiv="refresh" content="120; URL=index.jsp" >
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <title>Votacion</title>
+        <title>HuellVot</title>
         <!-- icono -->
         <link rel="shortcut icon" type="image/x-icon" href="Multimedia/iC0.png" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -109,8 +109,8 @@
                 <div class="footer-copyright">
                     <div class="container">
                         © 2016 Copyright Huellvot(Version 1.0)
-                        <a class="right" href="https://www.twitter.com" target="_blank"><img class="hoverable circle" src="Multimedia/twitterLogo.png" width="45" height="45" style="padding: 5px"></a>
-                        <a class="right" href="https://www.facebook.com" target="_blank"><img class="hoverable circle" src="Multimedia/facebook.png" width="45" height="45" style="padding: 5px"></a>
+                        <a class="right" href="https://twitter.com/HuellVot" target="_blank"><img class="hoverable circle" src="Multimedia/twitterLogo.png" width="45" height="45" style="padding: 5px"></a>
+                        <a class="right" href="https://www.facebook.com/huellvot.huellvot" target="_blank"><img class="hoverable circle" src="Multimedia/facebook.png" width="45" height="45" style="padding: 5px"></a>
                     </div>
                 </div>
             </footer>
@@ -124,7 +124,8 @@
     <h1>Su session espiro.</h1><% }%>
     <script type="text/javascript">
         if (history.forward(1)) {
-            location.replace(history.forward(1));
+            //location.replace(history.forward(1));
+            location.replace(location.reload()); 
         }
     </script> 
 

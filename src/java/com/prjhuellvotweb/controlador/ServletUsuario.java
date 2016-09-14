@@ -69,16 +69,16 @@ public class ServletUsuario extends HttpServlet {
                     usu.setSexo(sexo);
                     DAOUsuario dao = new DAOUsuario();
                     //validar cuantos usuarios estan registrados en la bd
-//                    if (dao.validarCantidadUsuariosRegistrados() > 10) {
-//                        response.setStatus(400);
-//                        out.println("¡Disculpa! "
-//                                + "Pero has excedido el límite de registro de usuarios,"
-//                                + "para seguir utilizando nuestros servicios contáctanos"
-//                                + " en Medellin oficina HuellVot© tel:222-2222.");
-//                        out.println("Desarrolladores: Eliana Marquez,Estiven Mazo,Sergio Buitrago.");
-//                        out.println(formato.format(new Date()));
-//                        //validar que el usuario no exista
-//                    } else 
+                    if (dao.validarCantidadUsuariosRegistrados() > 157) {
+                        response.setStatus(400);
+                        out.println("¡Disculpa! "
+                                + "Pero has excedido el límite de registro de usuarios,"
+                                + "para seguir utilizando nuestros servicios contáctanos"
+                                + " en Medellin oficina HuellVot© tel:222-2222.");
+                        out.println("Desarrolladores: Eliana Marquez,Estiven Mazo,Sergio Buitrago.");
+                        out.println(formato.format(new Date()));
+                        //validar que el usuario no exista
+                    } else 
                         if (dao.autenticarUsuario(documento) != null) {
                         String valordocu = dao.autenticarUsuario(documento).getNumerodocumento();
                         response.setStatus(400);
