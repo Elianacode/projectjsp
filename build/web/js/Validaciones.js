@@ -118,7 +118,7 @@ function tabla() {
             dom: 'Bfrtip',
             buttons: [
                 {extend: 'print',
-                    message: 'Reporte de creado realizado por Huellvot (Version 1.0)',
+                    message: 'Reporte de usuarios creado por Huellvot (Version 1.0)',
                     text: 'Imprimir', exportOptions: {
                         columns: [0, 1, 2, 3, 4]
                     }}, {extend: 'copy',
@@ -640,7 +640,7 @@ function actualizarO() {
             $("#descriO1").val("");
         },
         success: function () {
-            swal({title: "Resultado:", text: "Opcion actualizada.", timer: 4000, type: "success", showConfirmButton: false, allowEscapeKey: false});
+            swal({title: "Resultado:", text: "Opcion registrada.", timer: 4000, type: "success", showConfirmButton: false, allowEscapeKey: false});
             tablaOpcion();
         }
     }).done(function () {
@@ -710,6 +710,7 @@ $(document).ready(function () {
     $(".formOpcion").hide();
     $(".formReporte").hide();
     $(".Inicio").show();
+    
     //mostrar inicio
     $(".logo").click(function () {
         $(".formUsuario").hide();
@@ -719,6 +720,9 @@ $(document).ready(function () {
     });
     //mostrar modulo Usuario
     $(".showUser").click(function () {
+        $("#mnU").css("background-color","#238276");
+        $("#mnO").css("background-color","#00796b");
+        $("#mnR").css("background-color","#00796b");
         $(".formUsuario").show();
         $(".formOpcion").hide();
         $(".formReporte").hide();
@@ -727,6 +731,9 @@ $(document).ready(function () {
     });
 //mostrar modulo opción
     $(".showOp").click(function () {
+        $("#mnO").css("background-color","#238276");
+        $("#mnR").css("background-color","#00796b");
+        $("#mnU").css("background-color","#00796b");
         $(".formUsuario").hide();
         $(".formOpcion").show();
         $(".formReporte").hide();
@@ -735,6 +742,9 @@ $(document).ready(function () {
     });
     //mostrar modulo reportes
     $(".showRep").click(function () {
+        $("#mnR").css("background-color","#238276");
+        $("#mnO").css("background-color","#00796b");
+        $("#mnU").css("background-color","#00796b");        
         $(".formUsuario").hide();
         $(".formOpcion").hide();
         $(".formReporte").show();
@@ -801,7 +811,7 @@ $(document).ready(function () {
 
                     var object = eval(msj);
                     var x = object[0].v;
-                    var y = object[0].y; 
+                    var y = object[0].y;
                     var datos = {
                         type: "pie",
                         data: {

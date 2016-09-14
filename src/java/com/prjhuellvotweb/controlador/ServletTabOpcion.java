@@ -45,7 +45,7 @@ public class ServletTabOpcion extends HttpServlet {
                 ArrayList<Opcion> listO = new ArrayList();
                 listO = daoO.consultarAllOpcion();
                 if (listO != null) {
-                    out.println("<table class=\"tblOpcion responsive-table\">"
+                    out.println("<table class=\"tblOpcion responsive-table centered\" width=\"100%\">"
                             + "<thead><tr>"
                             + "<th data-field=\"id\">Codigo</th>"
                             + "<th data-field=\"op\">Opción</th>"
@@ -64,7 +64,7 @@ public class ServletTabOpcion extends HttpServlet {
                                 + "<td>" + id + "</td>"
                                 + "<td>" + Op + "</td>"
                                 + "<td>" + des + "</td>"
-                                + "<td><button type=\"button\" id=\"btnModificarOp\" name=\"mdO\" value=\"" + id + "\" class=\"waves-effect waves-light btn material-icons right acOpc \" onmouseover=\"abrirModalO()\" style='background-color:#fc7323;'><i class=\"material-icons center\">mode_edit</i></button>\n"
+                                + "<td><button type=\"button\" id=\"btnModificarOp\" name=\"mdO\" value=\"" + id + "\" class=\"waves-effect waves-light btn material-icons cenetered acOpc \" onmouseover=\"abrirModalO()\" style='background-color:#fc7323;'><i class=\"material-icons center\">mode_edit</i></button>\n"
                                 + "<td> <button type=\"button\" id=\"btnEliminarOp\"  name=\"btnO\" value=\"" + id + "\" class=\"waves-effect waves-light btn teal darken-2 eliminarO\"onmouseover=\"eliminarO()\"><i class=\"material-icons center\">delete</i></button></td>"
                                 + "</tr>");
                     }

@@ -64,6 +64,10 @@
         <servlet-name>ServletEstadisticasGenero</servlet-name>
         <servlet-class>com.prjhuellvotweb.controlador.ServletEstadisticasGenero</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletCorreo</servlet-name>
+        <servlet-class>com.prjhuellvotweb.controlador.ServletCorreo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletUsuario</servlet-name>
         <url-pattern>/ServletUsuario</url-pattern>
@@ -120,6 +124,26 @@
         <servlet-name>ServletEstadisticasGenero</servlet-name>
         <url-pattern>/ServletEstadisticasGenero</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCorreo</servlet-name>
+        <url-pattern>/ServletCorreo</url-pattern>
+    </servlet-mapping>
+     <context-param>
+        <param-name>host</param-name>
+        <param-value>smtp.gmail.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>port</param-name>
+        <param-value>25</param-value>
+    </context-param>
+    <context-param>
+        <param-name>usuario</param-name>
+        <param-value>huellvot@gmail.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>pass</param-name>
+        <param-value>HuellVot@e@j@s</param-value>
+    </context-param>
     <session-config>
         <session-timeout>
             30

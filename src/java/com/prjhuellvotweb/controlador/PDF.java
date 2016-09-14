@@ -56,7 +56,6 @@ public class PDF extends HttpServlet {
             //texto = "Reporte de los proyectos Sena CTGI (Centro tecnologico de gestion industrial) donde se dan a conocer"
              //                   + " los nombres de los proyectos y cantidad de votos obtenidos para cada proyecto.";
             try {
-
                 Connection con = Conexion.conectar("mysql");
                 DAOVoto dao = new DAOVoto();
                 List<List> lista =dao.estadisticaNumeroVotos();
@@ -71,7 +70,6 @@ public class PDF extends HttpServlet {
                         //abrir documento
                         documento.open();
                         Paragraph par2 = new Paragraph();
-                        Paragraph par3 = new Paragraph();
                         Paragraph par4 = new Paragraph();
                         //agregar una imagen logo sena al pdf
                         Image imagenes = Image.getInstance("C:\\Users\\pc\\Desktop\\PrjHuellVotWeb\\web\\Multimedia\\reportes.png");

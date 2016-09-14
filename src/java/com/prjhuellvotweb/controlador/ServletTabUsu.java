@@ -45,7 +45,7 @@ public class ServletTabUsu extends HttpServlet {
                 listU = daoU.consultarAllUsuarios();
                 if (listU != null) {
 
-                    out.println("<table class=\"tblUsuario responsive-table\">"
+                    out.println("<table class=\"tblUsuario responsive-table centered\" width=\"100%\">"
                             + "<thead><tr>"
 //                            + "<th data-field=\"id\">ID</th>"
                             + "<th data-field=\"nombre\">Nombre</th>"
@@ -72,7 +72,7 @@ public class ServletTabUsu extends HttpServlet {
                                 + "<td>" + sex + "</td>"
                                 + "<td>" + fec + "</td>"
                                 + "<td>" + cor + "</td>"
-                                + "<td><button type=\"button\" id=\"btnModificarUs\" name=\"mdU\" value=\"" + doc + "\" class=\"waves-effect waves-light btn material-icons right acUsu \" onmouseover=\"abrirModalU()\" style='background-color:#fc7323;'><i class=\"material-icons center\">mode_edit</i></button>\n"
+                                + "<td><button type=\"button\" id=\"btnModificarUs\" name=\"mdU\" value=\"" + doc + "\" class=\"waves-effect waves-light btn material-icons centered acUsu \" onmouseover=\"abrirModalU()\" style='background-color:#fc7323;'><i class=\"material-icons center\">mode_edit</i></button>\n"
                                 + "<td> <button type=\"button\" id=\"btnEliminarUsu\"  name=\"btnUsu\" value=\"" + doc + "\" class=\"waves-effect waves-light btn teal darken-2 eliminarU\"onmouseover=\"eliminarU()\"><i class=\"material-icons center\">delete</i></button></td>"
                                 + "</tr>");
                     }
