@@ -67,14 +67,14 @@
     <div class="container">
         <nav>
             <div class="nav-wrapper teal darken-2">
-                <a class="brand-logo right  hoverable"><img src="../Multimedia/logosena.PNG" width="55" height="55" ></a>
+                <a class="brand-logo right  hoverable" href="http://oferta.senasofiaplus.edu.co" target="_blank"><img src="../Multimedia/logosena.PNG" width="55" height="55" ></a>
                 <a class="brand-logo center">Huellvot</a>
                 <a data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="hide-on-med-and-down">
                     <li><a class="tooltipped logo" data-tooltip="Inicio"><img src="../Multimedia/iC0.png" width="45" height="55" ></a></li>
-                    <li><a class="showUser tooltipped " data-tooltip="Administrar Usuarios">Usuarios</a></li>
-                    <li><a class="showOp tooltipped " data-tooltip="Administrar Opciones">Opciones</a></li>
-                    <li><a class="showRep tooltipped " data-tooltip="Generar reportes">Reportes</a></li>
+                    <li><a class="showUser tooltipped" id="mnU" data-tooltip="Administrar Usuarios">Usuarios</a></li>
+                    <li><a class="showOp tooltipped" id="mnO" data-tooltip="Administrar Opciones">Opciones</a></li>
+                    <li><a class="showRep tooltipped "id="mnR" data-tooltip="Generar reportes">Reportes</a></li>
                     <li><a class="hoverable tooltipped " data-tooltip="Cerrar sesión" href="Cerrar-Sesion.jsp"><i class="material-icons center">settings_power</i></a>
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
@@ -105,12 +105,12 @@
             <div class="row">
                 <div class="col m12">
                     <div class="input-field col s12 m6">
-                        <input id="nomU" type="text" class="validate" name="nombre" required=""  length="70" onkeypress="sololetras()" onpaste=" return false">
+                        <input id="nomU" type="text" class="" name="nombre" required=""  length="70" onkeypress="sololetras()" onpaste=" return false">
                         <label id="lblnm" for="txtdesc">Nombre:</label>
                         <div id="vldrNombre" style="color:#f57c00;;"> </div>
                     </div>
                     <div class="input-field col s6 m3">
-                        <input id="docu" type="text"  name="documento" required="" length="11" class="validate" onkeypress="solonum()">
+                        <input id="docu" type="text"  name="documento" required="" length="11" class="" onkeypress="solonum()">
                         <label id="lbldocu" for="txtdesc" >Documento:</label>
                         <div id="vldrDocumento" style="color:#f57c00;;"> </div>
                     </div>
@@ -124,7 +124,7 @@
                         <div id="vldrsexo" style="color:#f57c00;;"> </div>
                     </div>
                     <div class="input-field col s12 m12">
-                        <input type="email" id="correo" class="validate" name="correo" required="" length="80" onkeyup="introinsertU(event)" placeholder="@" title="llenar este campo.">
+                        <input type="email" id="correo" class="" name="correo" required="" length="80" onkeyup="introinsertU(event)" placeholder="@" title="llenar este campo.">
                         <label id="lblcorreo" for="textarea1">Correo:</label>
                         <div  id="vldrCorreo" style="color:#f57c00;;"> </div>
                     </div>
@@ -275,13 +275,36 @@
                 <canvas id="chart" width="500" height="350"></canvas>
             </div>
         </div>
-        <footer class="page-footer teal darken-2">            
-            <div class="footer-copyright">
-                <div class="container">
-                    © 2016 Copyright Huellvot(Version 1.0)
+        <div class="row">
+                <div class="col m12">
+                    <div id="modalacercade" class="modal  modal-fixed-footer ">
+                        <div class="modal-content">
+                            <h3 class="center-align" style="background-color:#fc7323; z-index: -1; color:white">Acerca de</h3>
+                            <h5 style="color:#fc7323;">Versión Larga... </h5>
+                            <label class=" valign-wrapper" style="text-align: justify; font-size:15px;"> 
+                                Huellvot© es un sitio web resultado del proyecto formativo creado en el SENA por los aprendices Juan Estiven Mazo Moreno, Rocio Eliana Marquez Olarte, Sergio Alberto Buitrago pertenecientes al programa de Análisis y desarrollo de sistemas de información (ADSI); el cual se realizó en el Centro Textil y de Gestión Industrial (CTGI) desde el 7 de abril de 2014 hasta el 7 de abril de 2016, guiado por los instructores Harold Mauricio Gomez Zapata, Durley Cecilia Lopez Alzate, Lee Jared Escobar Gomez, Johnattan Jaramillo Gomez, Edwi Alexander Patiño Palacio, Hernan Dario Solano Salgado, Edwin Waldir Restrepo Henao, Diego Leon Ramirez Bedoya, Eldrin William Berrio Leon Johana Cecilia Gutierrez Florez, Robinson Restrepo Muñoz, Gloria Cecilia Tobon Gil, Juan Camilo Zapata Sanchez.
+                                El sitio web Huellvot© consiste en un sistema que permitirá realizar el proceso de votación por diferentes tipos de opciones, ademas de versatil el sitio web tiene una interfaz para todo tipo de usuarios, permite generar los informes resultados y estadísticas de la votaciòn desde el mismo momento en que se termina el proceso  
+                            </label>
+                            <h5 style="color:#fc7323;">Versión Corta... </h5> 
+                            <label class=" valign-wrapper" style="text-align: justify; font-size:15px;"> 
+                                Huellvot© es un sitio web resultado del proyecto formativo creado en el SENA por los aprendices Juan Estiven Mazo Moreno, Rocio Eliana Marquez Olarte, Sergio Alberto Buitrago pertenecientes al programa de Análisis y desarrollo de sistemas de información (ADSI), consiste en un sistema que permitirá realizar el proceso de votación por diferentes tipos de opciones, ademas de versatil el sitio web tiene una interfaz para todo tipo de usuarios, permite generar los informes resultados y estadísticas de la votaciòn desde el mismo momento en que se termina el proceso.
+                            </label>
+                        </div>
+                        <div class="modal-footer">
+                            <a class=" modal-action modal-close waves-effect waves-red btn-flat hoverable " id="cancelarMU">Cerrar</a>
+                        </div>
+                    </div>
+                </div>   <!-- fin del modal acerda de -->
+            </div>
+            <footer class="page-footer teal darken-2">            
+                <div class="footer-copyright">
+                    <div class="container">
+                        © 2016 Copyright Huellvot(Version 1.0) 
+                        <a href="Terminos&condiciones.jsp">Términos y condiciones</a>
+                        <a class="right tooltipped " data-tooltip="Acerca de" data-position="top" id="acercade"><img class="hoverable circle" src="Multimedia/acerca.png" width="45" height="45" style="padding: 5px" onclick="acercade()"></a>
                     <a class="right tooltipped " data-tooltip="Contacto" data-position="top" href="Contactenos.jsp" target="_blank"><img class="hoverable circle" src="Multimedia/contac.png" width="45" height="45" style="padding: 5px"></a>
-                    <a class="right" href="https://twitter.com/HuellVot" target="_blank"><img class="hoverable circle" src="Multimedia/twitterLogo.png" width="45" height="45" style="padding: 5px"></a>
-                    <a class="right" href="https://www.facebook.com/huellvot.huellvot" target="_blank"><img class="hoverable circle" src="Multimedia/facebook.png" width="45" height="45" style="padding: 5px"></a>
+                    <a class="right tooltipped " data-tooltip="Twitter" data-position="top" href="https://twitter.com/HuellVot" target="_blank"><img class="hoverable circle" src="Multimedia/twitterLogo.png" width="45" height="45" style="padding: 5px"></a>
+                    <a class="right tooltipped " data-tooltip="Facebook" data-position="top" href="https://www.facebook.com/huellvot.huellvot" target="_blank"><img class="hoverable circle" src="Multimedia/facebook.png" width="45" height="45" style="padding: 5px"></a>
                 </div>
             </div>
         </footer>

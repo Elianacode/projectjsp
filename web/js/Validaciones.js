@@ -14,15 +14,15 @@ function voto(bu) {
                 },
                 beforeSend: function () {
                     if (idO <= 0) {
-                        swal({title: "Error", type: "error", text: "Debe seleccionar una opción", timer: 4000, allowEscapeKey: false, confirmButtonText: "Aceptar",confirmButtonColor: "#238276"});
+                        swal({title: "Error", type: "error", text: "Debe seleccionar una opción", timer: 4000, allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
                     }
                 }, success: function () {
-                    swal({title: "Gracias por votar", text: "Te esperamos pronto.", type: "success", confirmButtonText: "Aceptar",confirmButtonColor: "#238276", allowEscapeKey: false}, function (isConfirm) {
-                    if (isConfirm) {
-                        window.location.assign('index.jsp');
-                        window.open("Administrar.jsp");
-                    }
-                });
+                    swal({title: "Gracias por votar", text: "Te esperamos pronto.", type: "success", confirmButtonText: "Aceptar", confirmButtonColor: "#238276", allowEscapeKey: false}, function (isConfirm) {
+                        if (isConfirm) {
+                            window.location.assign('index.jsp');
+                            window.open("Administrar.jsp");
+                        }
+                    });
                 },
                 error: function (respuesta) {
                     swal({title: "Error", type: "error", text: respuesta.responseText, timer: 4000, allowEscapeKey: false, confirmButtonText: "Aceptar"});
@@ -76,7 +76,7 @@ function ingresar() {
                 window.location.assign('Admin.jsp');
             }
             if (msj === "votacion") {
-                swal({title: "Tiene 2 minutos para votar:", type: "warning", text: "De click al número que corresponde a la opción que eligió.", allowEscapeKey: false, confirmButtonText: "Aceptar",confirmButtonColor: "#238276"},
+                swal({title: "Tiene 2 minutos para votar:", type: "warning", text: "De click al número que corresponde a la opción que eligió.", allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"},
                         function () {
                             window.location.assign('Votacion.jsp');
                         });
@@ -106,7 +106,7 @@ function tabla() {
     $.ajax({method: "POST",
         url: "../ServletTabUsu",
         error: function (respuesta) {
-            swal({title: "Advertencia", type: "warning", text: respuesta.responseText, allowEscapeKey: false, confirmButtonText: "Aceptar",confirmButtonColor: "#238276"});
+            swal({title: "Advertencia", type: "warning", text: respuesta.responseText, allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
         }
 
     }).done(function (msj) {
@@ -263,10 +263,8 @@ function insertarU() {
             correo: $("#correo").val(),
             sexo: $("#sexo").val()
         }, error: function (respuesta) {
-            swal({title: "Error", type: "error", text: respuesta.responseText, allowEscapeKey: false, confirmButtonText: "Aceptar",confirmButtonColor: "#238276"});
-            $("#nomU").val("");
-            $("#docu").val("");
-            $("#correo").val("@");
+            swal({title: "Error", type: "error", text: respuesta.responseText, allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
+            
         }, success: function () {
             swal({title: "Resultado:", text: "Usuario registrado.", timer: 2500, type: "success", showConfirmButton: false, allowEscapeKey: false});
             tabla();
@@ -437,7 +435,7 @@ function eliminarU() {
                             }
                         });
             } else {
-                swal({title: "Cancelado", type: "error", text: "Operacion cancelada.", allowEscapeKey: false, confirmButtonText: "Aceptar",confirmButtonColor: "#238276"});
+                swal({title: "Cancelado", type: "error", text: "Operacion cancelada.", allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
             }
         });
     });
@@ -450,7 +448,7 @@ function tablaOpcion() {
     $.ajax({method: "POST",
         url: "../ServletTabOpcion",
         error: function (respuesta) {
-            swal({title: "Advertencia", type: "warning", text: respuesta.responseText, allowEscapeKey: false, confirmButtonText: "Aceptar",confirmButtonColor: "#238276"});
+            swal({title: "Advertencia", type: "warning", text: respuesta.responseText, allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
         }
 
     }).done(function (msj) {
@@ -562,7 +560,7 @@ function insertarO() {
             descriO: $("#descriO").val()
 
         }, error: function (respuesta) {
-            swal({title: "Error", type: "error", text: respuesta.responseText, timer: 4000, allowEscapeKey: false, confirmButtonText: "Aceptar",confirmButtonColor: "#238276"});
+            swal({title: "Error", type: "error", text: respuesta.responseText, timer: 4000, allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
             $("#nomO").val("");
             $("#catO").val("");
             $("#descriO").val("");
@@ -634,7 +632,7 @@ function actualizarO() {
             descriO: $("#descriO1").val()
 
         }, error: function (respuesta) {
-            swal({title: "Error", type: "error", text: respuesta.responseText, timer: 4000, allowEscapeKey: false, confirmButtonText: "Aceptar",confirmButtonColor: "#238276"});
+            swal({title: "Error", type: "error", text: respuesta.responseText, timer: 4000, allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
             $("#nomO1").val("");
             $("#catO1").val("");
             $("#descriO1").val("");
@@ -684,33 +682,110 @@ function eliminarO() {
                     url: "../ServletEliOpci",
                     data: {idO: id
                     }, error: function (respuesta) {
-                        swal({title: "Error", type: "error", text: respuesta.responseText, timer: 4000, allowEscapeKey: false, confirmButtonText: "Aceptar",confirmButtonColor: "#238276"});
+                        swal({title: "Error", type: "error", text: respuesta.responseText, timer: 4000, allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
                     }
                 })
                         .done(function (msj) {
                             if (msj === "Opción eliminada correctamente.") {
-                                swal({title: "Eliminada", type: "success", text: "Opción eliminada correctamente.", allowEscapeKey: false, confirmButtonText: "Aceptar",confirmButtonColor: "#238276"});
+                                swal({title: "Eliminada", type: "success", text: "Opción eliminada correctamente.", allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
                                 tablaOpcion();
                             } else {
-                                swal({title: "Error", type: "error", text: "Error al eliminar Opción.", allowEscapeKey: false, confirmButtonText: "Aceptar",confirmButtonColor: "#238276"});
+                                swal({title: "Error", type: "error", text: "Error al eliminar Opción.", allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
                             }
                         });
             } else {
-                swal({title: "Cancelado", type: "error", text: "Operacion cancelada.", allowEscapeKey: false, confirmButtonText: "Aceptar",confirmButtonColor: "#238276"});
+                swal({title: "Cancelado", type: "error", text: "Operacion cancelada.", allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
             }
         });
     });
 }//fin funcion eliminar opcion 
 
+//acerca de
+function acercade() {
+    $("#acercade").click(function () {
+        $('#modalacercade').openModal();
+    });
 
+}
+
+//contactanos
+function contactanos() {
+                var correoC = document.getElementById("correoCont").value;
+                var nombreC = document.getElementById("nomCont").value;
+                var mensajeC = document.getElementById("msjCont").value;
+        $.ajax({method: "POST",
+            url: "ServletCorreo",
+            beforeSend: function () {
+                function ValidarCorreo(correo) {
+                    var tstCorreo = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-]+)\.)+([a-zA-Z0-9{2,4}])+$/;
+                    return tstCorreo.test(correo);
+                }
+                if (ValidarCorreo(correoC) === false) {
+                    $('#vldrCorreoCont').html('Debe ingresar un correo Valido.').slideDown(500);
+                    $('#lblcorreoCont').css("color", "#009688");
+                    $('#correoCont').focus();
+                    return  false;
+                } else if (correoC.length > 80) {
+                    $('#vldrCorreoCont').html('El correo es muy largo.').slideDown(500);
+                    $('#lblcorreoCont').css("color", "#009688");
+                    $('#correoCont').focus();
+                    return  false;
+                } else {
+                    $('#lblcorreoCont').css("color", "#009688");
+                    $('#vldrCorreoCont').html('').slideUp(30);
+                }
+                if (nombreC === null || nombreC === "") {
+                    $('#vldrNombreCont').html('Debe ingresar un nombre.').slideDown(500);
+                    $('#lblnmCont').css("color", "#009688");
+                    $('#nomCont').focus();
+                    return  false;
+                } else if (nombreC.length > 70) {
+                    $('#vldrNombreCont').html('El nombre es muy largo.').slideDown(500);
+                    $('#lblcorreoCont').css("color", "#009688");
+                    $('#nomCont').focus();
+                    return  false;
+                } else {
+                    $('#lblcorreoCont').css("color", "#009688");
+                    $('#vldrNombreCont').html('').slideUp(30);
+                }
+                if (mensajeC === null || mensajeC === "") {
+                    $('#vldrmsjCont').html('Debe ingresar un  mensaje.').slideDown(500);
+                    $('#lblmsjCont').css("color", "#009688");
+                    $('#msjCont').focus();
+                    return  false;
+                } else {
+                    $('#lblmsjCont').css("color", "#009688");
+                    $('#vldrmsjCont').html('').slideUp(30);
+                }
+
+            },
+            data: {
+                correoCont:correoC,
+                nombreCont: nombreC,
+                msjCont: mensajeC
+            },
+            success: function (respuesta) {
+                swal({title: "Gracias", text: "Tu mensaje ha sido enviado.", type: "success", confirmButtonText: "Aceptar", confirmButtonColor: "#238276", allowEscapeKey: false});
+
+            }, error: function (respuesta) {
+                swal({title: "Error", text: respuesta.responseText, type: "error", confirmButtonText: "Aceptar", confirmButtonColor: "#238276", allowEscapeKey: false});
+            }}
+
+        ).done(function () {
+
+        });
+
+
+}
 //mostrar y ocultar modulos 
 $(document).ready(function () {
+
     cache:false;
     $(".formUsuario").hide();
     $(".formOpcion").hide();
     $(".formReporte").hide();
     $(".Inicio").show();
-    
+
     //mostrar inicio
     $(".logo").click(function () {
         $(".formUsuario").hide();
@@ -720,9 +795,9 @@ $(document).ready(function () {
     });
     //mostrar modulo Usuario
     $(".showUser").click(function () {
-        $("#mnU").css("background-color","#238276");
-        $("#mnO").css("background-color","#00796b");
-        $("#mnR").css("background-color","#00796b");
+        $("#mnU").css("background-color", "#238276");
+        $("#mnO").css("background-color", "#00796b");
+        $("#mnR").css("background-color", "#00796b");
         $(".formUsuario").show();
         $(".formOpcion").hide();
         $(".formReporte").hide();
@@ -731,9 +806,9 @@ $(document).ready(function () {
     });
 //mostrar modulo opción
     $(".showOp").click(function () {
-        $("#mnO").css("background-color","#238276");
-        $("#mnR").css("background-color","#00796b");
-        $("#mnU").css("background-color","#00796b");
+        $("#mnO").css("background-color", "#238276");
+        $("#mnR").css("background-color", "#00796b");
+        $("#mnU").css("background-color", "#00796b");
         $(".formUsuario").hide();
         $(".formOpcion").show();
         $(".formReporte").hide();
@@ -742,9 +817,9 @@ $(document).ready(function () {
     });
     //mostrar modulo reportes
     $(".showRep").click(function () {
-        $("#mnR").css("background-color","#238276");
-        $("#mnO").css("background-color","#00796b");
-        $("#mnU").css("background-color","#00796b");        
+        $("#mnR").css("background-color", "#238276");
+        $("#mnO").css("background-color", "#00796b");
+        $("#mnU").css("background-color", "#00796b");
         $(".formUsuario").hide();
         $(".formOpcion").hide();
         $(".formReporte").show();
@@ -763,10 +838,10 @@ $(document).ready(function () {
             url: "../ServletVoto",
             beforeSend: function () {
                 if (idO.length === 0) {
-                    swal({title: "Error", type: "error", text: "Debe seleccionar una opción", timer: 4000, allowEscapeKey: false, confirmButtonText: "Aceptar",confirmButtonColor: "#238276"});
+                    swal({title: "Error", type: "error", text: "Debe seleccionar una opción", timer: 4000, allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
                 }
             }, success: function () {
-                swal({title: "Resultado:", text: "Votación exitosa, Gracias por votar.", type: "success", confirmButtonText: "Aceptar",confirmButtonColor: "#238276", allowEscapeKey: false}, function (isConfirm) {
+                swal({title: "Resultado:", text: "Votación exitosa, Gracias por votar.", type: "success", confirmButtonText: "Aceptar", confirmButtonColor: "#238276", allowEscapeKey: false}, function (isConfirm) {
                     if (isConfirm) {
                         window.location.assign('index.jsp');
                         window.open("Administrar.jsp");
@@ -774,7 +849,7 @@ $(document).ready(function () {
                 });
             },
             error: function (respuesta) {
-                swal({title: "Error", type: "error", text: respuesta.responseText, timer: 4000, allowEscapeKey: false, confirmButtonText: "Aceptar",confirmButtonColor: "#238276"});
+                swal({title: "Error", type: "error", text: respuesta.responseText, timer: 4000, allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
 
             },
             data: {Opcion: idO.val()

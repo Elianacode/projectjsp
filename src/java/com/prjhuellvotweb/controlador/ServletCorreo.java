@@ -54,6 +54,7 @@ public class ServletCorreo extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
              String correo = request.getParameter("correoCont");
             String asunto = request.getParameter("nombreCont");
+            asunto = asunto+" "+correo;
             String contenido = request.getParameter("msjCont");
 
             String mensaje = "";
@@ -63,9 +64,11 @@ public class ServletCorreo extends HttpServlet {
             System.out.println(host);
             System.out.println(port);
             try {
-                EmailUtility.sendEmail(host, port, usuario, pass, correo, asunto, contenido);
-
+                EmailUtility.sendEmail(host, port, usuario, pass, usuario, asunto, contenido);
+                System.out.println("Tu mensaje ha sido enviado.");
             } catch (MessagingException ex) {
+                response.setStatus(500);
+                out.println("No se ha sido enviado tu mensaje. Intenta nuevamente");
                 System.out.println("error en el email" + ex);
                 Logger.getLogger(ServletCorreo.class.getName()).log(Level.SEVERE, null, ex);
             }

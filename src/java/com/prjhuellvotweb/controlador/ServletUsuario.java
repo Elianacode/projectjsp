@@ -6,12 +6,17 @@
 package com.prjhuellvotweb.controlador;
 
 import com.prjhuellvotweb.DAO.DAOUsuario;
+import com.prjhuellvotweb.Util.EmailUtility;
 import com.prjhuellvotweb.modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,6 +40,23 @@ public class ServletUsuario extends HttpServlet {
      *
      *
      */
+    private String host;
+    private String port;
+    private String usuario;
+    private String pass;
+    
+    
+    @Override
+    public void init() {
+        ServletContext servlet = getServletContext();
+       
+        host = servlet.getInitParameter("host");
+        port = servlet.getInitParameter("port");
+        usuario = servlet.getInitParameter("usuario");
+        pass = servlet.getInitParameter("pass");
+
+    }
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -45,13 +67,19 @@ public class ServletUsuario extends HttpServlet {
             System.out.println(new Date());
             DateFormat formato = DateFormat.getDateInstance(DateFormat.LONG);
             System.out.println(formato.format(new Date()));
-            
+
             try (PrintWriter out = response.getWriter()) {
                 /* TODO output your page here. You may use following sample code. */
                 String documento = request.getParameter("documento");
                 String nombre = request.getParameter("nombre");
                 String correo = request.getParameter("correo");
                 String sexo = request.getParameter("sexo");
+                String asunto="Registro éxitoso";
+                String contenido=nombre.toUpperCase()+"\n"+
+                        "Le informamos que usted se há registrado en el sistema de votación HuellVot\n"
+                        + "Estos son sus datos para iniciar sesión \n\n"
+                        + "usuario: "+documento+"\n"+
+                        "clave: "+documento;
 
                 if (documento.isEmpty()) {
                     out.println("El número de documento es requerido.");
@@ -69,27 +97,34 @@ public class ServletUsuario extends HttpServlet {
                     usu.setSexo(sexo);
                     DAOUsuario dao = new DAOUsuario();
                     //validar cuantos usuarios estan registrados en la bd
-                    if (dao.validarCantidadUsuariosRegistrados() > 157) {
+                    if (dao.validarCantidadUsuariosRegistrados() > 150) {
                         response.setStatus(400);
-                        out.println("¡Disculpa! "
-                                + "Pero has excedido el límite de registro de usuarios,"
-                                + "para seguir utilizando nuestros servicios contáctanos"
-                                + " en Medellin oficina HuellVot© tel:222-2222.");
-                        out.println("Desarrolladores: Eliana Marquez,Estiven Mazo,Sergio Buitrago.");
+                        out.println("¡Disculpa! \n"
+                                + "Pero has excedido el límite de registro de usuarios,\n"
+                                + "para seguir utilizando nuestros servicios contáctanos\n"
+                                + " en Medellin oficina HuellVot© tel:222-2222.\n");
+                        out.println("Desarrolladores:\n Eliana Marquez Olarte \nEstiven Mazo Moreno\nSergio Buitrago Ruiz\n");
                         out.println(formato.format(new Date()));
                         //validar que el usuario no exista
-                    } else 
-                        if (dao.autenticarUsuario(documento) != null) {
-                        String valordocu = dao.autenticarUsuario(documento).getNumerodocumento();
-                        response.setStatus(400);
-                        out.print("Usuario ya existe.");
-                        System.out.println("Usuario con numero de documento: " + valordocu + " ya existe");
-                    } else if (dao.registrarUsuario(usu) == true) {
-                        out.print("Usuario registrado correctamente.");
-                        System.out.println("Usuario registrado correctamente.");
                     } else {
-                        response.setStatus(500);
-                        out.print("¡Disculpa! ha ocurrido un error en el servidor.");
+                        if (dao.autenticarUsuario(documento) != null) {
+                            String valordocu = dao.autenticarUsuario(documento).getNumerodocumento();
+                            response.setStatus(400);
+                            out.print("Usuario ya existe.");
+                            System.out.println("Usuario con numero de documento: " + valordocu + " ya existe");
+                        } else if (dao.registrarUsuario(usu) == true) {
+                            out.print("Usuario registrado correctamente.");
+                            try {
+                                EmailUtility.sendEmail(host, port, usuario, pass, correo, asunto, contenido);
+                            } catch (MessagingException ex) {
+                                response.setStatus(400);
+                                out.print("¡Disculpa! ha ocurrido un error al confirmar tu correo electrónico."+ex);
+                            }
+                            System.out.println("Usuario registrado correctamente.");
+                        } else {
+                            response.setStatus(500);
+                            out.print("¡Disculpa! ha ocurrido un error en el servidor.");
+                        }
                     }
                 }
 
