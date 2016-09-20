@@ -44,13 +44,18 @@ public class ServletVoto extends HttpServlet {
                 int idU = (int) sessionOk.getAttribute("votante");
                 String idO = request.getParameter("Opcion");
                 System.out.println("Id opcion" + idO);
+                Voto v = new Voto(idU, idO);
+                DAOVoto daov = new DAOVoto();
+                if (daov.valid(idU)){
+                    response.setStatus(400);
+                    out.println("Usted ya realizó la votación.");
+                }else{
                 if (idO == null) {
                     response.setStatus(400);
                     out.println("ERROR, Usted no ha seleccionado ninguna opcion");
                     System.out.println("ERROR, Usted no ha seleccionado ninguna opcion");
                 } else {
-                    Voto v = new Voto(idU, idO);
-                    DAOVoto daov = new DAOVoto();
+                    
                     if (daov.votarValid(v) == true) {
                         response.sendRedirect("index.jsp");
                     } else {
@@ -58,6 +63,7 @@ public class ServletVoto extends HttpServlet {
                         System.out.println("Ocurrio un error en el servidor.");
                     }
                 }
+            }
             }
         } else {
             sessionOk.invalidate();

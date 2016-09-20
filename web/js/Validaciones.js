@@ -26,7 +26,7 @@ function voto(bu) {
                     });
                 },
                 error: function (respuesta) {
-                    swal({title: "Error", type: "error", text: respuesta.responseText, timer: 4000, allowEscapeKey: false, confirmButtonText: "Aceptar"});
+                    swal({title: "Oops",  text: respuesta.responseText, showConfirmButton: false, timer: 2000, allowEscapeKey: false});
 
                 }
             });
