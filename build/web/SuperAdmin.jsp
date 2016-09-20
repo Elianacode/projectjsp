@@ -69,51 +69,49 @@
                         <font size="20" face="Arial" color=""><div class="card-panel hoverable center">Usuarios</div></font>
                     </div>
                 </div>
-                <form action="" method="">
+                <form action="ServletConfig" method="POST">
                     <div class="row">
                         <div class="col m12">  
-                            <h3>DateTimePicker</h3>
-	
                             <div class="input-field col s12 m6">
                                 <div class="input-field col s12 m6">
-                                <label  id="lblfecini" for="fech"  style="margin-top:-25px">Fecha de inicio</label>                               
+                                <label  id="lblfecini" for="fech" >Fecha de inicio</label>                               
                                 <input  class="datepicker" name="fechaini" required="" placeholder=" " type="text" value="" id="datetimepicker"/>  
                                 </div>                                
                                 <div id="vldrfechaini" style="color:#f57c00;;"> </div>
                             </div>
                             <div class="input-field col s12 m6">
                                 <div class="input-field col s12 m6">
-                                <label  id="lblfecfin" for="fechaifin" autofocus>Fecha final</label>                               
+                                <label  id="lblfecfin" for="fechafin">Fecha final</label>                               
                                 <input  class="datepicker" name="fechafin" required="" type="text" value="" id="datetimepicker2"/>  
                                 </div>                                
                             </div>                            
                             <div class="input-field col s12 m6">
                                 <p class="tooltipped" data-tooltip="Permite adicionar campo de genero en el formulario usuario.">
-                                    <input type="checkbox" id="genero"  />
+                                    <input type="checkbox" id="genero" value="si" name="genero" />
                                     <label for="genero">Genero</label>
                                 </p>
                             </div>
                             <div class="input-field col s12 m6">
                                 <p class="tooltipped" data-tooltip="Permite adicionar campo de Tipo documento en el formulario usuario.">
-                                    <input type="checkbox" id="Descripcion"  />
+                                    <input type="checkbox" id="Descripcion" value="si" name="Descripcion" />
                                     <label for="Descripcion">Descripcion</label>
                                 </p>
                             </div>
                             <div class="input-field col s12 m6">
                                 <p class="tooltipped" data-tooltip="Permite adicionar campo de Imagen en el formulario usuario.">
-                                    <input type="checkbox" id="imagen"/>
+                                    <input type="checkbox" id="imagen" value="si" name="imagen"/>
                                     <label for="imagen">Imagen</label>
                                 </p>
                             </div>
                             <div class="input-field col s12 m6">
                                 <p class="tooltipped" data-tooltip="Permite adicionar campo de Ficha en el formulario usuario.">
-                                    <input type="checkbox" id="ficha" />
+                                    <input type="checkbox" id="ficha" value="si" name="ficha"/>
                                     <label for="ficha">Ficha</label>
                                 </p>
                             </div>
                             <div class="input-field col s12 m6">
                                 <p class="tooltipped" data-tooltip="Permite adicionar varias categorias en la votación.">
-                                    <input type="checkbox" id="Categoria" />
+                                    <input type="checkbox" id="Categoria" value="si" name="Categoria"/>
                                     <label for="Categoria">Categoria</label>
                                 </p>
                             </div>
@@ -151,32 +149,18 @@ window.onerror = function(errorMsg) {
 }*/
 
 $.datetimepicker.setLocale('es');
-$('.lblfecini').focus();
-$('#datetimepicker_format').datetimepicker({value:'2015/04/15 05:03', format: $("#datetimepicker_format_value").val()});
-console.log($('#datetimepicker_format').datetimepicker('getValue'));
-
-$("#datetimepicker_format_change").on("click", function(e){
-	$("#datetimepicker_format").data('xdsoft_datetimepicker').setOptions({format: $("#datetimepicker_format_value").val()});
-});
-$("#datetimepicker_format_locale").on("change", function(e){
-	$.datetimepicker.setLocale($(e.currentTarget).val());
-});
-
+var fi;
 $('#datetimepicker').datetimepicker({
-format:'d/m/Y H:i',
+format:'Y/m/d H:i',
 minDate:$.now(),
 dayOfWeekStart : 1,
 lang:'es',
 startDate:'',
-onChangeDateTime:function(dp,$input){
-    alert($input.val())
+onChangeDateTime:function(dp,$input){    
+    this.fi=$input.val();
+    alert(this.fi);
   }
 });
-
-$('#datetimepicker').datetimepicker({value:$.now(),formatTime:'H:i',
-	formatDate:'d.m.Y',step:10});
-
-$('.some_class').datetimepicker();
 
 $('#default_datetimepicker').datetimepicker({
 	formatTime:'H:i',
@@ -187,12 +171,12 @@ $('#default_datetimepicker').datetimepicker({
 	timepickerScrollbar:false
 });
 $('#datetimepicker2').datetimepicker({
-format:'d/m/Y H:i',
+format:'Y/m/d H:i',
 minDate:$.now(),
 dayOfWeekStart : 1,
 lang:'es',
 disabledDates:['1986/01/08','1986/01/09','1986/01/10'],
-startDate: $('#datetimepicker')
+startDate: ''
 });
 </script>
         <script type="text/javascript">

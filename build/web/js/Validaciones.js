@@ -4,6 +4,7 @@
  * Author     : Eliana Marquez,Estiven Mazo,Sergio Buitrago
  * Proyecto   : Huellvot
  */
+
 function voto(bu) {
     var idO = bu.value;
     swal({title: "¿Seguro?", text: "DESEA VOTAR POR: " + bu.name + "?", type: "warning", showCancelButton: true, allowEscapeKey: false, cancelButtonText: "Cancelar", cancelButtonColor: "#fc7323", closeOnCancel: true, confirmButtonColor: "#238276", confirmButtonText: "Votar", closeOnConfirm: false, animation: "slide-from-top"}, function (isConfirm) {
@@ -779,6 +780,7 @@ function contactanos() {
 }
 //mostrar y ocultar modulos 
 $(document).ready(function () {
+
        
     cache:false;
     $(".formUsuario").hide();

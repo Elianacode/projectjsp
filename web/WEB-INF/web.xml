@@ -68,6 +68,10 @@
         <servlet-name>ServletCorreo</servlet-name>
         <servlet-class>com.prjhuellvotweb.controlador.ServletCorreo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletConfig</servlet-name>
+        <servlet-class>com.prjhuellvotweb.controlador.ServletConfig</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletUsuario</servlet-name>
         <url-pattern>/ServletUsuario</url-pattern>
@@ -128,7 +132,7 @@
         <servlet-name>ServletCorreo</servlet-name>
         <url-pattern>/ServletCorreo</url-pattern>
     </servlet-mapping>
-     <context-param>
+    <context-param>
         <param-name>host</param-name>
         <param-value>smtp.gmail.com</param-value>
     </context-param>
@@ -144,6 +148,10 @@
         <param-name>pass</param-name>
         <param-value>HuellVot@e@j@s</param-value>
     </context-param>
+    <servlet-mapping>
+        <servlet-name>ServletConfig</servlet-name>
+        <url-pattern>/ServletConfig</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

@@ -35,11 +35,11 @@ public class DAOConfiguracion {
             pst = con.prepareStatement(sql);
             pst.setString(1,c.getSexoConfig());
             pst.setString(2, c.getCategoriaConfig());
-            pst.setString(2, c.getFichaConfig());
-            pst.setString(2, c.getImagenConfig());
-            pst.setString(2, c.getDescripcionConfig());
-            pst.setDate(6, c.getFechainicioConfig());
-            pst.setDate(7, c.getFechafinConfig());
+            pst.setString(3, c.getFichaConfig());
+            pst.setString(4, c.getImagenConfig());
+            pst.setString(5, c.getDescripcionConfig());
+            pst.setString(6, c.getFechainicioConfig());
+            pst.setString(7, c.getFechafinConfig());
             if (pst.executeUpdate() == 1) {
                 System.out.println("Se ha registrado su configuración");
 
@@ -62,7 +62,7 @@ public class DAOConfiguracion {
         try {
             pst = con.prepareStatement(sql);
             ResultSet r = pst.executeQuery(sql);
-            while (r.next()) {                
+            if (r.next()) {                
                 c.setSexoConfig(r.getString(1));
                 System.out.println(c.getSexoConfig());
                 c.setCategoriaConfig(r.getString("categoriaConfig"));

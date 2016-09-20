@@ -6,6 +6,7 @@
 package com.prjhuellvotweb.modelo;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -17,8 +18,8 @@ public class Configuracion {
     private String fichaConfig;
     private String imagenConfig;
     private String descripcionConfig;
-    private Date fechainicioConfig;
-    private Date fechafinConfig;
+    private String fechainicioConfig;
+    private String fechafinConfig;
 
     public String getSexoConfig() {
         return sexoConfig;
@@ -60,20 +61,24 @@ public class Configuracion {
         this.descripcionConfig = descripcionConfig;
     }
 
-    public Date getFechainicioConfig() {
+    public String getFechainicioConfig() {
         return fechainicioConfig;
     }
 
-    public void setFechainicioConfig(Date fechainicioConfig) {
+    public void setFechainicioConfig(String fechainicioConfig) {
         this.fechainicioConfig = fechainicioConfig;
     }
 
-    public Date getFechafinConfig() {
+    public String getFechafinConfig() {
         return fechafinConfig;
     }
 
-    public void setFechafinConfig(Date fechafinConfig) {
+    public void setFechafinConfig(String fechafinConfig) {
         this.fechafinConfig = fechafinConfig;
     }
+
+    
+
+   
     
 }
