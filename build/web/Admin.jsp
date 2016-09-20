@@ -140,20 +140,7 @@
                         <label id="lblcorreo" for="correo">Correo:</label>
                         <div  id="vldrCorreo" style="color:#f57c00;;"> </div>
                     </div>
-                    <%
-                        if (conf.getFichaConfig().equals("si")) {
-                    %>
-                    <div class="input-field col s6 m3">
-                        <select  id="ficha" required="" name="ficha" value="">
-                            <option value="" disabled selected>Escoja la ficha</option>
-                            <option value="femenino">XXXX</option> 
-                            <option value="masculino">XXXX</option>  
-                            <option value="masculino">XXXX</option>
-                        </select>
-                        <label id="lblficha">Ficha</label>
-                        <div id="vldrficha" style="color:#f57c00;;"> </div>
-                    </div>
-                    <%}%>
+                    
                 </div>
 
             </div>
