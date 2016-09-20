@@ -16,7 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author pc
+ * @author Juan Estiven Mazo Moreno
+ * @actualiza Rocio Eliana Marquez Olarte
  */
 public class ServletModUsu extends HttpServlet {
 
@@ -44,19 +45,19 @@ public class ServletModUsu extends HttpServlet {
                     usuario = dao.autenticarUsuario(id);
                     out.println("<input id='id1' class='hide' value='"+usuario.getId()+"'>"
                             + "<div class=\"input-field col s12 m6\">\n"
-                            + "<input id=\"nomU1\" type=\"text\" class=\"validate\" name=\"nombre\" required=\"\" value=\"" + usuario.getNombre() + "\" onkeypress=\"sololetras()\" onpaste=\" return false\">\n"
+                            + "<input id=\"nomU1\" type=\"text\" placeholder='Nombre' name=\"nombre\" required=\"\" value=\"" + usuario.getNombre() + "\" onkeypress=\"sololetras()\" onpaste=\" return false\">\n"
                             + "<label id=\"lblnm1\" for=\"txtdesc\"></label>\n"
-                            + "<div id=\"vldrNombre1\" style=\"color:red;\"> </div>\n"
+                            + "<div id=\"vldrNombre1\" style=\"color:#f57c00;\"> </div>\n"
                             + "</div>\n"
                             + "<div class=\"input-field col s12 m6\">\n"
-                            + "<input id=\"docu1\" type=\"text\" class=\"validate\" name=\"documento\" required=\"\" value=\"" + usuario.getNumerodocumento() + "\" maxlength=\"11\" onkeypress=\"solonum()\" >\n"
+                            + "<input id=\"docu1\" type=\"text\" placeholder='Documento' name=\"documento\" required=\"\" value=\"" + usuario.getNumerodocumento() + "\" maxlength=\"11\" onkeypress=\"solonum()\" >\n"
                             + "<label id=\"lbldocu1\" for=\"txtdesc\" ></label>\n"
-                            + "<div id=\"vldrDocumento1\" style=\"color:red;\"> </div>\n"
+                            + "<div id=\"vldrDocumento1\" style=\"color:#f57c00;\"> </div>\n"
                             + "</div>\n"
                             + "<div class=\"input-field col s12 m12\">\n"
-                            + "<input type=\"email\" id=\"correo1\" class=\"validate\" name=\"correo\" required=\"\" onkeyup=\"intromodalU(event)\" value=\"" + usuario.getCorreo() + "\">\n"
+                            + "<input type=\"email\" id=\"correo1\" placeholder='Correo' name=\"correo\" required=\"\" onkeyup=\"intromodalU(event)\" value=\"" + usuario.getCorreo() + "\">\n"
                             + "<label id=\"lblcorreo1\" for=\"textarea1\"></label>\n"
-                            + "<div  id=\"vldrCorreo1\" style=\"color:red;\"> </div>\n"
+                            + "<div  id=\"vldrCorreo1\" style=\"color:#f57c00;\"> </div>\n"
                             + "</div>");
                 }
 

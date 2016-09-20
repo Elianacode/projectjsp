@@ -1,7 +1,8 @@
 <%-- 
-    Document   : n
+    Document   : Error 500
     Created on : 14/07/2016, 11:37:02 PM
-    Author     : Familia Mazo
+    Author     : Eliana Marquez,  Estiven Mazo , Sergio Buitrago
+    Proyecto   : Huellvot
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -24,7 +25,7 @@
         <div class="container">
             <div class="col s12 m12 l12">
                 <font size="20" face="Arial" color="white"><div class="card-panel nav-wrapper teal darken-2 hoverable center-align ">
-                    <a class="brand-logo right"><img src="../Multimedia/logosena.PNG" width="55" height="55" ></a>
+                    <a class="brand-logo right" href="http://oferta.senasofiaplus.edu.co" target="_blank"><img src="../Multimedia/logosena.PNG" width="55" height="55" ></a>
                     HuellVot
                     <a class="brand-logo left"><img src="../Multimedia/iC0.png" width="55" height="80" ></a>
                 </div>
@@ -63,13 +64,15 @@
             <footer class="page-footer teal darken-2">            
                 <div class="footer-copyright">
                     <div class="container">
-                        © 2016 Copyright Huellvot(Version 1.0) 
-                        <a href="Terminos&condiciones.jsp">Términos y condiciones</a>
+                        <div class="center">
+                        © 2016 Copyright Huellvot(Versión 1.0)  
+                        <a href="Terminos&condiciones.jsp" >Términos y condiciones</a>
+                        
                         <a class="right tooltipped " data-tooltip="Acerca de" data-position="top" id="acercade"><img class="hoverable circle" src="Multimedia/acerca.png" width="45" height="45" style="padding: 5px" onclick="acercade()"></a>
                         <a class="right tooltipped " data-tooltip="Contacto" data-position="top" href="Contactenos.jsp" target="_blank"><img class="hoverable circle" src="Multimedia/contac.png" width="45" height="45" style="padding: 5px"></a>
                         <a class="right tooltipped " data-tooltip="Twitter" data-position="top" href="https://twitter.com/HuellVot" target="_blank"><img class="hoverable circle" src="Multimedia/twitterLogo.png" width="45" height="45" style="padding: 5px"></a>
                         <a class="right tooltipped " data-tooltip="Facebook" data-position="top" href="https://www.facebook.com/huellvot.huellvot" target="_blank"><img class="hoverable circle" src="Multimedia/facebook.png" width="45" height="45" style="padding: 5px"></a>
-                    </div>
+                        </div></div>
                 </div>
             </footer>
         </div>

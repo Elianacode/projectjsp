@@ -6,7 +6,6 @@
 package com.prjhuellvotweb.DAO;
 
 import com.prjhuellvotweb.Util.Conexion;
-import com.prjhuellvotweb.modelo.Usuario;
 import com.prjhuellvotweb.modelo.Voto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -149,7 +148,7 @@ public class DAOVoto {
             con.close();
             return v;
         } catch (SQLException e) {
-            System.out.println("Error al intentar hacer una consulta" + e);
+            System.out.println("Error al contar todos los votos" + e);
         }
         return null;
     }

@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,7 +20,8 @@ import java.sql.SQLException;
  */
 
 public class DAOConfiguracion {
-    String sql;    
+    String sql; 
+    ResultSet rs;
     PreparedStatement pst;
     Connection con;
     private void conectar(){
@@ -54,24 +57,50 @@ public class DAOConfiguracion {
     
     public Configuracion consultarConfig() {
         conectar();
-        String sql = "SELECT * FROM configuracion";
+        sql = "SELECT * FROM configuracion";
         Configuracion c = new Configuracion();
         try {
             pst = con.prepareStatement(sql);
             ResultSet r = pst.executeQuery(sql);
             while (r.next()) {                
-                c.setSexoConfig(r.getString("sexoConfig"));
+                c.setSexoConfig(r.getString(1));
+                System.out.println(c.getSexoConfig());
                 c.setCategoriaConfig(r.getString("categoriaConfig"));
-                c.setDescripcionConfig(r.getString("descripcionConfig"));
-                c.setFichaConfig(r.getString("fichaConfig"));
-                c.setImagenConfig("imagenConfig");
-                c.setFechainicioConfig(r.getDate("fechainicioConfig"));
-                c.setFechafinConfig(r.getDate("fechafinConfig"));
+                c.setDescripcionConfig(r.getString("descripcionConfig"));                
+//                c.setFichaConfig(r.getString("fichaConfig"));
+//                c.setImagenConfig("imagenConfig");
+//                c.setFechainicioConfig(r.getDate("fechainicioConfig"));
+//                c.setFechafinConfig(r.getDate("fechafinConfig"));
             }
             return c;
         } catch (Exception e) {
             System.out.println(e);
         }
         return null;
+    }
+    public int contar() {
+        conectar();
+        sql = "SELECT COUNT(*) FROM configuracion";
+        int tot= 0;
+       
+        try {
+            pst = con.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()) {                
+                tot= rs.getInt(1);                
+            }            
+        } catch (SQLException ex) {
+            System.out.println("Error verificando configuración, " + ex);
+        }finally{
+            try {
+                pst.close();
+                rs.close();
+                con.close();                
+            } catch (SQLException ex) {
+                Logger.getLogger(DAOConfiguracion.class.getName()).log(Level.SEVERE, null, ex);
+            }finally{
+                return tot;
+            }
+        }
     }
 }

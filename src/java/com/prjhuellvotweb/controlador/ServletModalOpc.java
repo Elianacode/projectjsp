@@ -5,22 +5,19 @@
  */
 package com.prjhuellvotweb.controlador;
 
-import com.prjhuellvotweb.DAO.DAOCategoria;
 import com.prjhuellvotweb.DAO.DAOOpcion;
-import com.prjhuellvotweb.modelo.Categoria;
 import com.prjhuellvotweb.modelo.Opcion;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author pc
+  * @author Juan Estiven Mazo Moreno
+ * @actualiza Rocio Eliana Marquez Olarte
  */
 public class ServletModalOpc extends HttpServlet {
 
@@ -50,15 +47,15 @@ public class ServletModalOpc extends HttpServlet {
                     if (dao.mostrarNomCat(dao.consultarOpcionxId(id).getIdc()) != null) {
                         opcion2 = dao.mostrarNomCat(dao.consultarOpcionxId(id).getIdc());
                       out.println("<div class=\"input-field col s12 m6\">\n"
-                                + "<input  id=\"idO1\" type=\"text\" class=\"validate hide\" name=\"nombrep\" required=\"\" value=\"" + opcion.getIdOpcion() + "\">\n"
-                                + "<input  id=\"nomO1\" type=\"text\" class=\"validate\" name=\"nombrep\" required=\"\" value=\"" + opcion.getNombreO() + "\" length=\"120\">\n"
+                                + "<input  id=\"idO1\" type=\"text\" class=\" hide\" name=\"nombrep\" required=\"\" value=\"" + opcion.getIdOpcion() + "\">\n"
+                                + "<input  id=\"nomO1\" type=\"text\" placeholder='Nombre' name=\"nombrep\" required=\"\" value=\"" + opcion.getNombreO() + "\" length=\"120\">\n"
                                 + "<div id=\"vldrNombreO1\" style=\"color:#f57c00;;\"></div></div>\n"
                                 + "<div class=\"input-field col s12 m6\">\n"
-                                + "<input  id=\"catO1\" type=\"text\" class=\"validate\" name=\"nombrep\" required=\"\" value=\"" + opcion2.getNombreO() + "\" length=\"120\">\n"
-                                + "<div id=\"vldrNombreO1\" style=\"color:#f57c00;;\"> </div>\n"
+                                + "<input  id=\"catO1\" type=\"text\" placeholder='Categoría' name=\"nombrep\" required=\"\" value=\"" + opcion2.getNombreO() + "\" length=\"120\">\n"
+                                + "<div id=\"vldrcatO1\" style=\"color:#f57c00;;\"> </div>\n"
                                 + "</div>"
                                 + "<div class=\"input-field col s12 m12\">\n"
-                                + "<textarea id=\"descriO1\" class=\"materialize-textarea\" name=\"descripcionp\"required=\"\"\">" + opcion.getDescripcionO() + "</textarea>\n"
+                                + "<textarea id=\"descriO1\" placeholder='Descripcón' class=\"materialize-textarea\" name=\"descripcionp\"required=\"\"\">" + opcion.getDescripcionO() + "</textarea>\n"
                                 + "<div id=\"vldrdescO1\" style=\"color:#f57c00;\"> </div>\n"
                                 + "</div>");
                     }

@@ -1,7 +1,8 @@
 <%-- 
     Document   : Votacion
     Created on : 14/06/2016, 09:41:57 PM
-    Author     : Eliana Marquez  Estiven Mazo  Sergio Buitrago
+    Author     : Eliana Marquez,  Estiven Mazo , Sergio Buitrago
+    Proyecto   : Huellvoto
 --%>
 
 <%@page import="java.sql.Date"%>
@@ -128,14 +129,16 @@
         <div class="col s12 m12 l12 ">
             <footer class="page-footer teal darken-2">            
                 <div class="footer-copyright">
-                    <div class="container">
-                        © 2016 Copyright Huellvot(Version 1.0) 
-                        <a href="Terminos&condiciones.jsp">Términos y condiciones</a>
+                    <div class="container" style="font-size: 70%;">
+                        <div class="center">
+                        © 2016 Copyright Huellvot(Versión 1.0)  
+                        <a href="Terminos&condiciones.jsp" >Términos y condiciones</a>
+                        
                         <a class="right tooltipped " data-tooltip="Acerca de" data-position="top" id="acercade"><img class="hoverable circle" src="Multimedia/acerca.png" width="45" height="45" style="padding: 5px" onclick="acercade()"></a>
                         <a class="right tooltipped " data-tooltip="Contacto" data-position="top" href="Contactenos.jsp" target="_blank"><img class="hoverable circle" src="Multimedia/contac.png" width="45" height="45" style="padding: 5px"></a>
                         <a class="right tooltipped " data-tooltip="Twitter" data-position="top" href="https://twitter.com/HuellVot" target="_blank"><img class="hoverable circle" src="Multimedia/twitterLogo.png" width="45" height="45" style="padding: 5px"></a>
                         <a class="right tooltipped " data-tooltip="Facebook" data-position="top" href="https://www.facebook.com/huellvot.huellvot" target="_blank"><img class="hoverable circle" src="Multimedia/facebook.png" width="45" height="45" style="padding: 5px"></a>
-                    </div>
+                        </div></div>
                 </div>
             </footer>
         </div>

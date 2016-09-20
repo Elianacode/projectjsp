@@ -1,7 +1,8 @@
 <%-- 
     Document   : Terminos y condiciones
     Created on : 14-sep-2016, 20:02:43
-    Author     : pc
+    Author     : Eliana Marquez,  Estiven Mazo , Sergio Buitrago
+    Proyecto   : Huellvot
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -121,7 +122,7 @@
                             HUELLVOT no controla ni garantiza y, por lo tanto, no se hace responsable de la presencia de virus ni de otros elementos en los contenidos del portal que puedan producir alteraciones en el sistema informático (software y hardware) del usuario o en los documentos electrónicos y ficheros almacenados en el sistema informático del usuario
                             <br>
                             <br>
-                            f. Limitación de garantía
+                            e. Limitación de garantía
                             <br>
                             <br>
                             El uso de este sitio se realizará bajo la responsabilidad del usuario, sin que se entienda que se conceda ninguna garantía sobre los contenidos, dado que este NO es un canal de comercialización. Todos los contenidos se entregan “como están” o “en las condiciones en que se encuentran” y sin garantía alguna.

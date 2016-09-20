@@ -6,18 +6,16 @@
 package com.prjhuellvotweb.DAO;
 
 import com.prjhuellvotweb.Util.Conexion;
-import com.prjhuellvotweb.modelo.Categoria;
 import com.prjhuellvotweb.modelo.Opcion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
  *
- * @author Admin_Sena
+ * @author Eliana Marquez Olarte
  */
 public class DAOOpcion {
 

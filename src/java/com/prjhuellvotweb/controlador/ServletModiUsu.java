@@ -13,11 +13,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author pc
+ * @author Juan Estiven Mazo Moreno
+ * @actualiza Rocio Eliana Marquez Olarte
  */
 public class ServletModiUsu extends HttpServlet {
 

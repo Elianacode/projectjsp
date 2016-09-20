@@ -26,7 +26,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.sql.Connection;
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -38,7 +37,8 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Estiven Mazo Moreno
+ * @author Juan Estiven Mazo Moreno
+ * @actualiza Rocio Eliana Marquez Olarte 
  */
 @WebServlet(urlPatterns = {"/Reporte"})
 public class PDF extends HttpServlet {

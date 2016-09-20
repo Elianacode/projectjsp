@@ -19,7 +19,8 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author pc
+ * @author Juan Estiven Mazo Moreno
+ * @actualiza Rocio Eliana Marquez Olarte
  */
 public class ServletTabOpcion extends HttpServlet {
 
@@ -47,7 +48,7 @@ public class ServletTabOpcion extends HttpServlet {
                 if (listO != null) {
                     out.println("<table class=\"tblOpcion responsive-table centered\" width=\"100%\">"
                             + "<thead><tr>"
-                            + "<th data-field=\"id\">Codigo</th>"
+                            + "<th data-field=\"id\">Código</th>"
                             + "<th data-field=\"op\">Opción</th>"
                             + "<th data-field=\"des\">Descripción</th>"
                             + "<th data-field=\"editar\">Editar</th>"

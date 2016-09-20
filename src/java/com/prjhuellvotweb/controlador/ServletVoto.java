@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
+ * @actualiza Juan Estiven Mazo Moreno
  * @author Rocio Eliana Marquez Olarte
  */
 public class ServletVoto extends HttpServlet {

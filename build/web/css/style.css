@@ -32,7 +32,9 @@ and open the template in the editor.
     background-color:#fc7323;/*da un giro de 180G cuando se ponga el puntero*/
     color: #FFFFFF;
 }
-
+.selected{
+    background-color: #238276;
+}
 
 /*
 .lado{

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Familia Mazo
+ * @author Estiven Mazo Moreno
  */
 public class DAOUsuario extends Conexion {
 

@@ -6,7 +6,6 @@
 package com.prjhuellvotweb.controlador;
 
 import com.prjhuellvotweb.DAO.DAOVoto;
-import com.prjhuellvotweb.modelo.Voto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -18,7 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author pc
+ * @author Rocio Eliana Marquez Olarte
+ * @acttualiza Juan Estiven Mazo Moreno
  */
 public class ServletEstadisticasGenero extends HttpServlet {
 
@@ -44,6 +44,9 @@ public class ServletEstadisticasGenero extends HttpServlet {
             }else{                           
                 int v =(list.get(0));
                 int y = (list.get(1));
+                int s=v+y;
+                v = 100*v/s;
+                y = 100*y/s;
                 String json;
                 json = "[{v:'"+v+"',y:'"+y+"'}]";
                 out.println(json);

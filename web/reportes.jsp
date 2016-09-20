@@ -1,7 +1,8 @@
 <%-- 
     Document   : reportes
     Created on : 18-ago-2016, 10:27:14
-    Author     :Eliana Marquez,  Estiven Mazo , Sergio Buitrago
+    Author     : Eliana Marquez,  Estiven Mazo , Sergio Buitrago
+    Proyecto   : Huellvot
 --%>
 <!-- Estadisticas -->
         <script type="text/javascript" src="JS-Estadisticas/Chart.bundle.min.js"></script>

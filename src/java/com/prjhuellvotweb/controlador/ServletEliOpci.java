@@ -13,11 +13,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author pc
+ * @author Juan Estiven Mazo Moreno
+ * @actualiza Rocio Eliana Marquez Olarte
  */
 public class ServletEliOpci extends HttpServlet {
 
@@ -51,7 +51,7 @@ public class ServletEliOpci extends HttpServlet {
                 out.println("Opción eliminada correctamente.");
             } else if (dao.eliminarOpcion(opcion) == false) {
                 response.setStatus(400);
-                out.println("La opción no se puede eliminar por que ya tiene un voto.");
+                out.println("La opción no se puede eliminar porque ya inicio la votación.");
             } else {
                 response.setStatus(500);
                 out.println("Error en el servidor.");

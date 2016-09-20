@@ -2,7 +2,10 @@
     Document   : Admin
     Created on : 16-jun-2016, 11:53:42
     Author     : Eliana Marquez,  Estiven Mazo , Sergio Buitrago
+    Proyecto   : Huellvot
 --%>
+<%@page import="com.prjhuellvotweb.modelo.Configuracion"%>
+<%@page import="com.prjhuellvotweb.DAO.DAOConfiguracion"%>
 <% HttpSession sessionOk = request.getSession();
     if (sessionOk.getAttribute("admin") == null) {
         sessionOk.invalidate();
@@ -38,7 +41,7 @@
         <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
         <!--Cdn para Tabla -->
-
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"><font></font>
     <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <!--Cdn para botones-->
@@ -93,7 +96,10 @@
                 </div>
             </div>
         </div>
-
+        <%DAOConfiguracion daoconf = new DAOConfiguracion();
+        Configuracion conf = new Configuracion();
+        conf = daoconf.consultarConfig();        
+        %>
         <div class="formUsuario" id="foruser" >
             <div class="row">
                 <div class="col s12 m12 l12">
@@ -106,26 +112,32 @@
                 <div class="col m12">
                     <div class="input-field col s12 m6">
                         <input id="nomU" type="text" class="" name="nombre" required=""  length="70" onkeypress="sololetras()" onpaste=" return false">
-                        <label id="lblnm" for="txtdesc">Nombre:</label>
+                        <label id="lblnm" for="nomU">Nombre:</label>
                         <div id="vldrNombre" style="color:#f57c00;;"> </div>
                     </div>
                     <div class="input-field col s6 m3">
                         <input id="docu" type="text"  name="documento" required="" length="11" class="" onkeypress="solonum()">
-                        <label id="lbldocu" for="txtdesc" >Documento:</label>
+                        <label id="lbldocu" for="docu" >Documento</label>
                         <div id="vldrDocumento" style="color:#f57c00;;"> </div>
                     </div>
+                    <%
+                        if (conf.getSexoConfig().equals("si")) {
+                    %>
                     <div class="input-field col s6 m3">
                         <select  id="sexo" required="" name="sexo" value="">
-                            <option value="" disabled selected>Escoja el sexo</option>
+                            <option value="" disabled selected>Escoja el género</option>
                             <option value="femenino">Femenino</option> 
                             <option value="masculino">Masculino</option>  
+                            <option value="masculino">No definido</option>
                         </select>
                         <label id="lblsexo">Género</label>
                         <div id="vldrsexo" style="color:#f57c00;;"> </div>
                     </div>
+                    <%}%>
+                    
                     <div class="input-field col s12 m12">
-                        <input type="email" id="correo" class="" name="correo" required="" length="80" onkeyup="introinsertU(event)" placeholder="@" title="llenar este campo.">
-                        <label id="lblcorreo" for="textarea1">Correo:</label>
+                        <input type="email" id="correo" class="" name="correo" required="" length="80" onkeyup="introinsertU(event)" placeholder="sucorreo@dominio.co" title="llenar este campo.">
+                        <label id="lblcorreo" for="correo">Correo:</label>
                         <div  id="vldrCorreo" style="color:#f57c00;;"> </div>
                     </div>
                 </div>
@@ -171,14 +183,16 @@
             <div class="row">
                 <div class="col m12">
                     <div class="input-field col s12 m6">
-                        <input  id="nomO" type="text" class="validate" name="nombrep" required="" length="120" >
+                        <input  id="nomO" type="text" class="" name="nombrep" required="" length="120" >
                         <label  id="lblnomO" for="txtdesc">Nombre</label>
                         <div id="vldrNombreO" style="color:#f57c00;;"> </div>
                     </div>
+                    <%
+                        if (conf.getCategoriaConfig().equals("si")) {%>
                     <div class="input-field col s12 m6">
                         <select  id="catO" required="" name="categoriap" value="">
-                            <option value="" disabled selected>Escoja la categoria</option>
-                            <% DAOCategoria dao = new DAOCategoria();
+                            <option value="" disabled selected>Escoja la categoría</option>
+                            <%DAOCategoria dao = new DAOCategoria();
                                 ArrayList<Categoria> list = new ArrayList();
                                 list = dao.consultarCategorias();
                                 for (int i = 0; i < list.size(); i++) {
@@ -191,15 +205,18 @@
                             <option value="<%=m%>"><%=nom%></option>
                             <%}%>
                         </select>
-                        <label id="lblcatO">Categoria</label>
+                        <label id="lblcatO">Categoría</label>
                         <div id="vldrcatO" style="color:#f57c00;;"> </div>
                     </div>
-
+                    <%}%>
+                    <%
+                        if (conf.getDescripcionConfig().equals("si")) {%>
                     <div class="input-field col s12 m12">
                         <textarea id="descriO" class="materialize-textarea" name="descripcionp"required=""></textarea>
                         <label id="lbldesO" for="textarea1">Descripción</label>
                         <div id="vldrdescO" style="color:#f57c00;"> </div>
                     </div>
+                    <%}%>
                 </div>
             </div>
             <div class="row">
@@ -298,14 +315,17 @@
             </div>
             <footer class="page-footer teal darken-2">            
                 <div class="footer-copyright">
-                    <div class="container">
-                        © 2016 Copyright Huellvot(Version 1.0) 
-                        <a href="Terminos&condiciones.jsp">Términos y condiciones</a>
+                    <div class="container" style="font-size: 70%;">
+                    <div class="center">
+                        © 2016 Copyright Huellvot(Versión 1.0)  
+                        <a href="Terminos&condiciones.jsp" >Términos y condiciones</a>
+                        
                         <a class="right tooltipped " data-tooltip="Acerca de" data-position="top" id="acercade"><img class="hoverable circle" src="Multimedia/acerca.png" width="45" height="45" style="padding: 5px" onclick="acercade()"></a>
-                    <a class="right tooltipped " data-tooltip="Contacto" data-position="top" href="Contactenos.jsp" target="_blank"><img class="hoverable circle" src="Multimedia/contac.png" width="45" height="45" style="padding: 5px"></a>
-                    <a class="right tooltipped " data-tooltip="Twitter" data-position="top" href="https://twitter.com/HuellVot" target="_blank"><img class="hoverable circle" src="Multimedia/twitterLogo.png" width="45" height="45" style="padding: 5px"></a>
-                    <a class="right tooltipped " data-tooltip="Facebook" data-position="top" href="https://www.facebook.com/huellvot.huellvot" target="_blank"><img class="hoverable circle" src="Multimedia/facebook.png" width="45" height="45" style="padding: 5px"></a>
-                </div>
+                        <a class="right tooltipped " data-tooltip="Contacto" data-position="top" href="Contactenos.jsp" target="_blank"><img class="hoverable circle" src="Multimedia/contac.png" width="45" height="45" style="padding: 5px"></a>
+                        <a class="right tooltipped " data-tooltip="Twitter" data-position="top" href="https://twitter.com/HuellVot" target="_blank"><img class="hoverable circle" src="Multimedia/twitterLogo.png" width="45" height="45" style="padding: 5px"></a>
+                        <a class="right tooltipped " data-tooltip="Facebook" data-position="top" href="https://www.facebook.com/huellvot.huellvot" target="_blank"><img class="hoverable circle" src="Multimedia/facebook.png" width="45" height="45" style="padding: 5px"></a>
+                        </div>
+                    </div>
             </div>
         </footer>
     </div>

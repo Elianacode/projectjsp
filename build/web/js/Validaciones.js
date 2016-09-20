@@ -39,11 +39,11 @@ function sololetras() {
         event.returnValue = false;
 }//fin funcion validar solo letras
 
-// validacion para escribir solo  numeros
+// validacion para escribir solo  números
 function solonum() {
     if ((event.keyCode < 48) || (event.keyCode > 57))
         event.returnValue = false;
-}//fin funcion validar solo numeros
+}//fin funcion validar solo números
 
 //Funcion para ingresar al sistema
 function ingresar() {
@@ -58,25 +58,28 @@ function ingresar() {
             if (usuario === "" || usuario.length === 0 || usuario === null) {
                 $("#usuario").focus();
                 $("#vldrusuario").html("Ingrese usuario.").slideDown(500);
-            } else {
-                $("#vldrusuario").html("").slideUp(300);
-            }
-            if (clave === null || clave.length === 0 || clave === "") {
+                $('#lblusu').css("color", "#f57c00");
+            } else if (clave === null || clave.length === 0 || clave === "") {
                 $("#clave").focus();
                 $("#vldrdocumento").html("Ingrese clave.").slideDown(500);
+                $('#lblcla').css("color", "#f57c00");
             } else {
+                $("#vldrusuario").html("").slideUp(300);
                 $("#vldrdocumento").html("").slideUp(300);
             }
 
             if (usuario === "" && clave === "") {
-                swal({title: "Error", text: "Los campos estan vacios", type: "error", allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
+                swal({title: "Error", text: "Los campos están vacíos", type: "error", allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
             }
         }, success: function (msj) {
+            if (msj === "superAdmin") {
+                window.location.assign('SuperAdmin.jsp');
+            }
             if (msj === "admin") {
                 window.location.assign('Admin.jsp');
             }
             if (msj === "votacion") {
-                swal({title: "Tiene 2 minutos para votar:", type: "warning", text: "De click al número que corresponde a la opción que eligió.", allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"},
+                swal({title: "Tiene 2 minutos para votar:", type: "warning", text: "De clic al número que corresponde a la opción que eligió.", allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"},
                         function () {
                             window.location.assign('Votacion.jsp');
                         });
@@ -118,7 +121,7 @@ function tabla() {
             dom: 'Bfrtip',
             buttons: [
                 {extend: 'print',
-                    message: 'Reporte de usuarios creado por Huellvot (Version 1.0)',
+                    message: 'Reporte de usuarios creado por HuellVot (Versión 1.0)',
                     text: 'Imprimir', exportOptions: {
                         columns: [0, 1, 2, 3, 4]
                     }}, {extend: 'copy',
@@ -126,12 +129,8 @@ function tabla() {
                         columns: [0, 1, 2, 3, 4]
                     }
                 },
-//                {extend: 'csv',
-//            text: 'Exportar a csv' ,exportOptions: {
-//                    columns: [ 0, 1, 2 ]
-//                } },
                 {extend: 'excel',
-                    message: 'Reporte de usuarios creado desde HuellVot (Version1.0).',
+                    message: 'Reporte de usuarios creado por HuellVot (Versión 1.0)',
                     text: 'Exportar a excel', exportOptions: {
                         columns: [0, 1, 2, 3, 4]
                     }},
@@ -142,7 +141,7 @@ function tabla() {
                     , exportOptions: {
                         columns: [0, 1, 2, 3, 4]
                     },
-                    message: 'Reporte de usuarios creado desde HuellVot (Version1.0).'}
+                    message: 'Reporte de usuarios creado por HuellVot (Versión 1.0)'}
 
             ],
             "language": {
@@ -151,7 +150,7 @@ function tabla() {
                 "infoPostFix": "",
                 "thousands": ",",
                 "loadingRecords": "Loading...",
-                "processing": "Processing...",
+                "processing": "Procesando...",
                 "infoFiltered": "(Filtrado de _MAX_ registros)",
                 "zeroRecords": "No se encontraron registros",
                 "lengthMenu": "",
@@ -165,7 +164,7 @@ function tabla() {
                 buttons: {
                     copyTitle: 'Listo',
                     copySuccess: {
-                        _: 'Se han copiados %d registros al portapepeles',
+                        _: 'Se han copiados %d registros al portapapeles',
                         1: 'Se ha copiado 1 registro al portapapeles'
                     }
                 }
@@ -193,17 +192,17 @@ function insertarU() {
             var sexo = document.getElementById("sexo").value;
             if (nombre === null || nombre.length === 0) {
                 $('#vldrNombre').html('Debe ingresar nombre.').slideDown(500);
-                $('#lblnm').css("color", "#b71c1c");
+                $('#lblnm').css("color", "#f57c00");
                 $('#nomU').focus();
                 return  false;
             } else if (ValidarNom(nombre) === false) {
                 $('#vldrNombre').html('El nombre debe comenzar con letras').slideDown(500);
-                $('#lblnm').css("color", "#f44336");
+                $('#lblnm').css("color", "#f57c00");
                 $('#nomU').focus();
                 return  false;
             } else if (nombre.length > 69) {
                 $('#vldrNombre').html('El nombre es muy largo.').slideDown(500);
-                $('#lblnm').css("color", "#f44336");
+                $('#lblnm').css("color", "#f57c00");
                 $('#nomU').focus();
                 return  false;
             } else {
@@ -211,13 +210,13 @@ function insertarU() {
                 $('#vldrNombre').html('').slideUp(30);
             }
             if (documento === "") {
-                $('#vldrDocumento').html('Debe ingresar numero de documento.').slideDown(500);
-                $('#lbldocu').css("color", "#f44336");
+                $('#vldrDocumento').html('Debe ingresar número de documento.').slideDown(500);
+                $('#lbldocu').css("color", "#f57c00");
                 $('#docu').focus();
                 return  false;
             } else if (documento.length > 11) {
-                $('#vldrDocumento').html('El numero de documento es muy largo.').slideDown(500);
-                $('#lbldocu').css("color", "#f44336");
+                $('#vldrDocumento').html('El número de documento es muy largo.').slideDown(500);
+                $('#lbldocu').css("color", "#f57c00");
                 $('#docu').focus();
                 return  false;
             } else {
@@ -225,8 +224,8 @@ function insertarU() {
                 $('#vldrDocumento').html('').slideUp(300);
             }
             if (isNaN(documento)) {
-                $('#vldrDocumento').html('El documento ingresado no es un numero.').slideDown(500);
-                $('#lbldocu').css("color", "#f44336");
+                $('#vldrDocumento').html('El documento ingresado no es un número.').slideDown(500);
+                $('#lbldocu').css("color", "#f57c00");
                 $('#docu').focus();
                 return  false;
             } else {
@@ -234,8 +233,8 @@ function insertarU() {
                 $('#vldrDocumento').html('').slideUp(300);
             }
             if (sexo === "") {
-                $('#vldrsexo').html('Debe elegir un sexo').slideDown(500);
-                $('#lblsexo').css("color", "#f44336");
+                $('#vldrsexo').html('Debe elegir un género').slideDown(500);
+                $('#lblsexo').css("color", "#f57c00");
                 $('#sexo').focus();
                 return  false;
             } else {
@@ -243,13 +242,13 @@ function insertarU() {
                 $('#lblsexo').css("color", "#009688");
             }
             if (ValidarCorreo(correo) === false) {
-                $('#vldrCorreo').html('Debe ingresar un correo Valido.').slideDown(500);
-                $('#lblcorreo').css("color", "#f44336");
+                $('#vldrCorreo').html('Debe ingresar un correo valido, de la forma sucorreo@dominio.co').slideDown(500);
+                $('#lblcorreo').css("color", "#f57c00");
                 $('#correo').focus();
                 return  false;
             } else if (correo.length > 80) {
                 $('#vldrCorreo').html('El correo es muy largo.').slideDown(500);
-                $('#lblcorreo').css("color", "#f44336");
+                $('#lblcorreo').css("color", "#f57c00");
                 $('#correo').focus();
                 return  false;
             } else {
@@ -264,7 +263,7 @@ function insertarU() {
             sexo: $("#sexo").val()
         }, error: function (respuesta) {
             swal({title: "Error", type: "error", text: respuesta.responseText, allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
-            
+
         }, success: function () {
             swal({title: "Resultado:", text: "Usuario registrado.", timer: 2500, type: "success", showConfirmButton: false, allowEscapeKey: false});
             tabla();
@@ -304,18 +303,18 @@ function actualizarU() {
             var correo = document.getElementById("correo1").value;
             if (nombre === null || nombre.length === 0) {
                 $('#vldrNombre1').html('Debe ingresar nombre.').slideDown(500);
-                $('#lblnm1').css("color", "#f44336");
+                $('#lblnm1').css("color", "#f57c00");
                 $('#nomU1').focus();
                 return  false;
                 // e.preventDefault();//evitar accion por defecto por ejemplo enlaces
             } else if (ValidarNom(nombre) === false) {
                 $('#vldrNombre1').html('El nombre debe comenzar con letras').slideDown(500);
-                $('#lblnm1').css("color", "#f44336");
+                $('#lblnm1').css("color", "#f57c00");
                 $('#nomU1').focus();
                 return  false;
             } else if (nombre.length > 69) {
                 $('#vldrNombre1').html('El nombre es muy largo.').slideDown(500);
-                $('#lblnm1').css("color", "#f44336");
+                $('#lblnm1').css("color", "#f57c00");
                 $('#nomU1').focus();
                 return  false;
             } else {
@@ -323,13 +322,13 @@ function actualizarU() {
                 $('#vldrNombre1').html('').slideUp(30);
             }
             if (documento === "") {
-                $('#vldrDocumento1').html('Debe ingresar numero de documento.').slideDown(500);
-                $('#lbldocu1').css("color", "#f44336");
+                $('#vldrDocumento1').html('Debe ingresar número de documento.').slideDown(500);
+                $('#lbldocu1').css("color", "#f57c00");
                 $('#docu1').focus();
                 return  false;
             } else if (documento.length > 11) {
-                $('#vldrDocumento1').html('El numero de documento es muy largo.').slideDown(500);
-                $('#lbldocu1').css("color", "#f44336");
+                $('#vldrDocumento1').html('El número de documento es muy largo.').slideDown(500);
+                $('#lbldocu1').css("color", "#f57c00");
                 $('#docu1').focus();
                 return  false;
             } else {
@@ -337,8 +336,8 @@ function actualizarU() {
                 $('#vldrDocumento1').html('').slideUp(300);
             }
             if (isNaN(documento)) {
-                $('#vldrDocumento1').html('El documento ingresado no es un numero.').slideDown(500);
-                $('#lbldocu1').css("color", "#f44336");
+                $('#vldrDocumento1').html('El documento ingresado no es un número.').slideDown(500);
+                $('#lbldocu1').css("color", "#f57c00");
                 $('#docu1').focus();
                 return  false;
             } else {
@@ -346,13 +345,13 @@ function actualizarU() {
                 $('#vldrDocumento1').html('').slideUp(300);
             }
             if (ValidarCorreo(correo) === false) {
-                $('#vldrCorreo1').html('Debe ingresar un correo Valido.').slideDown(500);
-                $('#lblcorreo1').css("color", "#f44336");
+                $('#vldrCorreo1').html('Debe ingresar un correo valido, de la forma sucorreo@dominio.co').slideDown(500);
+                $('#lblcorreo1').css("color", "#f57c00");
                 $('#correo1').focus();
                 return  false;
             } else if (correo.length > 80) {
                 $('#vldrCorreo1').html('El correo es muy largo.').slideDown(500);
-                $('#lblcorreo1').css("color", "#f44336");
+                $('#lblcorreo1').css("color", "#f57c00");
                 $('#correo1').focus();
                 return  false;
             } else {
@@ -435,7 +434,7 @@ function eliminarU() {
                             }
                         });
             } else {
-                swal({title: "Cancelado", type: "error", text: "Operacion cancelada.", allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
+                swal({title: "Cancelado", type: "error", text: "Operación cancelada.", allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
             }
         });
     });
@@ -461,7 +460,7 @@ function tablaOpcion() {
             dom: 'Bfrtip',
             buttons: [
                 {extend: 'print',
-                    message: 'Reporte de opciones creado desde HuellVot (Version1.0).',
+                    message: 'Reporte de opciones creado desde HuellVot (Versión 1.0).',
                     text: 'Imprimir', exportOptions: {
                         columns: [0, 1, 2]
                     }}
@@ -479,7 +478,7 @@ function tablaOpcion() {
                         columns: [0, 1, 2]
                     }},
                 {extend: 'pdf',
-                    message: 'Reporte de opciones creado desde HuellVot (Version1.0).',
+                    message: 'Reporte de opciones creado desde HuellVot (Versión 1.0).',
                     text: 'Exportar a PDF', exportOptions: {
                         columns: [0, 1, 2]
                     }}
@@ -491,7 +490,7 @@ function tablaOpcion() {
                 "infoPostFix": "",
                 "thousands": ",",
                 "loadingRecords": "Loading...",
-                "processing": "Processing...",
+                "processing": "Procesando...",
                 "infoFiltered": "(Filtrado de _MAX_ registros)",
                 "zeroRecords": "No se encontraron registros",
                 "lengthMenu": "",
@@ -537,7 +536,7 @@ function insertarO() {
                 $('#vldrNombreO').html('').slideUp(30);
             }
             if (catO === null || catO === "") {
-                $('#vldrcatO').html('Debe seleccionar categoria.').slideDown(500);
+                $('#vldrcatO').html('Debe seleccionar categoría.').slideDown(500);
                 $('#catO').focus();
                 $('#lblcatO').css("color", "#f57c00");
                 return false;
@@ -566,7 +565,7 @@ function insertarO() {
             $("#descriO").val("");
         },
         success: function () {
-            swal({title: "Resultado:", text: "Opcion registrada.", timer: 4000, type: "success", showConfirmButton: false, allowEscapeKey: false});
+            swal({title: "Resultado:", text: "Opción registrada.", timer: 4000, type: "success", showConfirmButton: false, allowEscapeKey: false});
             tablaOpcion();
         }
     }).done(function () {
@@ -604,7 +603,7 @@ function actualizarO() {
                 $('#vldrNombreO1').html('').slideUp(30);
             }
             if (catO === null || catO === "") {
-                $('#vldrcatO1').html('Debe seleccionar categoria.').slideDown(500);
+                $('#vldrcatO1').html('Debe seleccionar categoría.').slideDown(500);
                 $('#catO1').focus();
                 $('#lblcatO1').css("color", "#f57c00");
                 return false;
@@ -638,7 +637,7 @@ function actualizarO() {
             $("#descriO1").val("");
         },
         success: function () {
-            swal({title: "Resultado:", text: "Opcion registrada.", timer: 4000, type: "success", showConfirmButton: false, allowEscapeKey: false});
+            swal({title: "Resultado:", text: "Opción actualizada.", timer: 4000, type: "success", showConfirmButton: false, allowEscapeKey: false});
             tablaOpcion();
         }
     }).done(function () {
@@ -670,13 +669,14 @@ function abrirModalO() {
 }//fin funcion abrir modal opcion
 
 //validar enter del modal  actualizar Opción
+//No se implementa porque en la descripción pueden haber enter
 function intromodalO() {}//fin funcion intro modal opcion
 
 // Ajax de eliminar  Opción
 function eliminarO() {
     $(".eliminarO").click(function () {
         var id = $(this).val();
-        swal({title: "Esta seguro?", text: "Desea eliminar la Opción", type: "warning", allowEscapeKey: false, showCancelButton: true, cancelButtonText: "Cancelar", closeOnCancel: false, confirmButtonColor: "#238276", confirmButtonText: "Aceptar", closeOnConfirm: false, animation: "slide-from-top"}, function (isConfirm) {
+        swal({title: "Esta seguro?", text: "Desea eliminar la opción", type: "warning", allowEscapeKey: false, showCancelButton: true, cancelButtonText: "Cancelar", closeOnCancel: false, confirmButtonColor: "#238276", confirmButtonText: "Aceptar", closeOnConfirm: false, animation: "slide-from-top"}, function (isConfirm) {
             if (isConfirm) {
                 $.ajax({method: "POST",
                     url: "../ServletEliOpci",
@@ -690,11 +690,11 @@ function eliminarO() {
                                 swal({title: "Eliminada", type: "success", text: "Opción eliminada correctamente.", allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
                                 tablaOpcion();
                             } else {
-                                swal({title: "Error", type: "error", text: "Error al eliminar Opción.", allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
+                                swal({title: "Error", type: "error", text: "Error al eliminar opción.", allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
                             }
                         });
             } else {
-                swal({title: "Cancelado", type: "error", text: "Operacion cancelada.", allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
+                swal({title: "Cancelado", type: "error", text: "Operación cancelada.", allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
             }
         });
     });
@@ -710,76 +710,76 @@ function acercade() {
 
 //contactanos
 function contactanos() {
-                var correoC = document.getElementById("correoCont").value;
-                var nombreC = document.getElementById("nomCont").value;
-                var mensajeC = document.getElementById("msjCont").value;
-        $.ajax({method: "POST",
-            url: "ServletCorreo",
-            beforeSend: function () {
-                function ValidarCorreo(correo) {
-                    var tstCorreo = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-]+)\.)+([a-zA-Z0-9{2,4}])+$/;
-                    return tstCorreo.test(correo);
-                }
-                if (ValidarCorreo(correoC) === false) {
-                    $('#vldrCorreoCont').html('Debe ingresar un correo Valido.').slideDown(500);
-                    $('#lblcorreoCont').css("color", "#009688");
-                    $('#correoCont').focus();
-                    return  false;
-                } else if (correoC.length > 80) {
-                    $('#vldrCorreoCont').html('El correo es muy largo.').slideDown(500);
-                    $('#lblcorreoCont').css("color", "#009688");
-                    $('#correoCont').focus();
-                    return  false;
-                } else {
-                    $('#lblcorreoCont').css("color", "#009688");
-                    $('#vldrCorreoCont').html('').slideUp(30);
-                }
-                if (nombreC === null || nombreC === "") {
-                    $('#vldrNombreCont').html('Debe ingresar un nombre.').slideDown(500);
-                    $('#lblnmCont').css("color", "#009688");
-                    $('#nomCont').focus();
-                    return  false;
-                } else if (nombreC.length > 70) {
-                    $('#vldrNombreCont').html('El nombre es muy largo.').slideDown(500);
-                    $('#lblcorreoCont').css("color", "#009688");
-                    $('#nomCont').focus();
-                    return  false;
-                } else {
-                    $('#lblcorreoCont').css("color", "#009688");
-                    $('#vldrNombreCont').html('').slideUp(30);
-                }
-                if (mensajeC === null || mensajeC === "") {
-                    $('#vldrmsjCont').html('Debe ingresar un  mensaje.').slideDown(500);
-                    $('#lblmsjCont').css("color", "#009688");
-                    $('#msjCont').focus();
-                    return  false;
-                } else {
-                    $('#lblmsjCont').css("color", "#009688");
-                    $('#vldrmsjCont').html('').slideUp(30);
-                }
+    var correoC = document.getElementById("correoCont").value;
+    var nombreC = document.getElementById("nomCont").value;
+    var mensajeC = document.getElementById("msjCont").value;
+    $.ajax({method: "POST",
+        url: "ServletCorreo",
+        beforeSend: function () {
+            function ValidarCorreo(correo) {
+                var tstCorreo = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-]+)\.)+([a-zA-Z0-9{2,4}])+$/;
+                return tstCorreo.test(correo);
+            }
+            if (ValidarCorreo(correoC) === false) {
+                $('#vldrCorreoCont').html('Debe ingresar un correo valido.').slideDown(500);
+                $('#lblcorreoCont').css("color", "#009688");
+                $('#correoCont').focus();
+                return  false;
+            } else if (correoC.length > 80) {
+                $('#vldrCorreoCont').html('El correo es muy largo.').slideDown(500);
+                $('#lblcorreoCont').css("color", "#009688");
+                $('#correoCont').focus();
+                return  false;
+            } else {
+                $('#lblcorreoCont').css("color", "#009688");
+                $('#vldrCorreoCont').html('').slideUp(30);
+            }
+            if (nombreC === null || nombreC === "") {
+                $('#vldrNombreCont').html('Debe ingresar un nombre.').slideDown(500);
+                $('#lblnmCont').css("color", "#009688");
+                $('#nomCont').focus();
+                return  false;
+            } else if (nombreC.length > 70) {
+                $('#vldrNombreCont').html('El nombre es muy largo.').slideDown(500);
+                $('#lblcorreoCont').css("color", "#009688");
+                $('#nomCont').focus();
+                return  false;
+            } else {
+                $('#lblcorreoCont').css("color", "#009688");
+                $('#vldrNombreCont').html('').slideUp(30);
+            }
+            if (mensajeC === null || mensajeC === "") {
+                $('#vldrmsjCont').html('Debe ingresar un  mensaje.').slideDown(500);
+                $('#lblmsjCont').css("color", "#009688");
+                $('#msjCont').focus();
+                return  false;
+            } else {
+                $('#lblmsjCont').css("color", "#009688");
+                $('#vldrmsjCont').html('').slideUp(30);
+            }
 
-            },
-            data: {
-                correoCont:correoC,
-                nombreCont: nombreC,
-                msjCont: mensajeC
-            },
-            success: function (respuesta) {
-                swal({title: "Gracias", text: "Tu mensaje ha sido enviado.", type: "success", confirmButtonText: "Aceptar", confirmButtonColor: "#238276", allowEscapeKey: false});
+        },
+        data: {
+            correoCont: correoC,
+            nombreCont: nombreC,
+            msjCont: mensajeC
+        },
+        success: function (respuesta) {
+            swal({title: "Gracias", text: "Tu mensaje ha sido enviado.", type: "success", confirmButtonText: "Aceptar", confirmButtonColor: "#238276", allowEscapeKey: false});
 
-            }, error: function (respuesta) {
-                swal({title: "Error", text: respuesta.responseText, type: "error", confirmButtonText: "Aceptar", confirmButtonColor: "#238276", allowEscapeKey: false});
-            }}
+        }, error: function (respuesta) {
+            swal({title: "Error", text: respuesta.responseText, type: "error", confirmButtonText: "Aceptar", confirmButtonColor: "#238276", allowEscapeKey: false});
+        }}
 
-        ).done(function () {
+    ).done(function () {
 
-        });
+    });
 
 
 }
 //mostrar y ocultar modulos 
 $(document).ready(function () {
-
+       
     cache:false;
     $(".formUsuario").hide();
     $(".formOpcion").hide();
@@ -795,9 +795,9 @@ $(document).ready(function () {
     });
     //mostrar modulo Usuario
     $(".showUser").click(function () {
-        $("#mnU").css("background-color", "#238276");
-        $("#mnO").css("background-color", "#00796b");
-        $("#mnR").css("background-color", "#00796b");
+        $("#mnU").addClass("selected");
+        $("#mnO").removeClass("selected");
+        $("#mnR").removeClass("selected");
         $(".formUsuario").show();
         $(".formOpcion").hide();
         $(".formReporte").hide();
@@ -806,9 +806,9 @@ $(document).ready(function () {
     });
 //mostrar modulo opción
     $(".showOp").click(function () {
-        $("#mnO").css("background-color", "#238276");
-        $("#mnR").css("background-color", "#00796b");
-        $("#mnU").css("background-color", "#00796b");
+        $("#mnO").addClass("selected");
+        $("#mnU").removeClass("selected");
+        $("#mnR").removeClass("selected");
         $(".formUsuario").hide();
         $(".formOpcion").show();
         $(".formReporte").hide();
@@ -817,9 +817,9 @@ $(document).ready(function () {
     });
     //mostrar modulo reportes
     $(".showRep").click(function () {
-        $("#mnR").css("background-color", "#238276");
-        $("#mnO").css("background-color", "#00796b");
-        $("#mnU").css("background-color", "#00796b");
+        $("#mnR").addClass("selected");
+        $("#mnO").removeClass("selected");
+        $("#mnU").removeClass("selected");
         $(".formUsuario").hide();
         $(".formOpcion").hide();
         $(".formReporte").show();
@@ -900,8 +900,8 @@ $(document).ready(function () {
                                     ]
                                 }],
                             labels: [
-                                "Femenino",
-                                "Masculino"
+                                "Mujeres",
+                                "Hombres"
                             ]
                         },
                         options: {

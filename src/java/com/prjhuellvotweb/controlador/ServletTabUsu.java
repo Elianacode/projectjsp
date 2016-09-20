@@ -10,6 +10,7 @@ import com.prjhuellvotweb.modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +20,8 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author pc
+ * @author Juan Estiven Mazo Moreno
+ * @actualiza Rocio Eliana Marquez Olarte
  */
 public class ServletTabUsu extends HttpServlet {
 
@@ -50,27 +52,27 @@ public class ServletTabUsu extends HttpServlet {
 //                            + "<th data-field=\"id\">ID</th>"
                             + "<th data-field=\"nombre\">Nombre</th>"
                             + "<th data-field=\"documento\">Documento</th>"
-                            + "<th data-field=\"sexo\">Sexo</th>"
+                            + "<th data-field=\"sexo\">Género</th>"
                             + "<th data-field=\"fecha\">Fecha Registro</th>"
                             + "<th data-field=\"correo\">Correo</th>"
                             + "<th data-field=\"editar\">Editar</th>"
                             + "<th data-field=\"eliminar\">Eliminar</th>"
                             + "</tr></thead><tbody>");
                     for (int i = 0; i < listU.size(); i++) {
-                        Usuario u = new Usuario();
-                        u = (listU.get(i));
+                        Usuario u = (listU.get(i));
                         int id = u.getId();
                         String nom = u.getNombre();
                         String cor = u.getCorreo();
                         String sex = u.getSexo();
                         String doc = u.getNumerodocumento();
-                        Date fec = u.getFecha();
+                        DateFormat formato = DateFormat.getDateInstance(DateFormat.MEDIUM);
+                        Date fec = u.getFecha();                        
                         out.println("<tr>");
 //                      out.println("<td>" + id + "</td>"
                         out.println("<td>" + nom + "</td>"
                                 + "<td>" + doc + "</td>"
                                 + "<td>" + sex + "</td>"
-                                + "<td>" + fec + "</td>"
+                                + "<td>" + formato.format(fec) + "</td>"
                                 + "<td>" + cor + "</td>"
                                 + "<td><button type=\"button\" id=\"btnModificarUs\" name=\"mdU\" value=\"" + doc + "\" class=\"waves-effect waves-light btn material-icons centered acUsu \" onmouseover=\"abrirModalU()\" style='background-color:#fc7323;'><i class=\"material-icons center\">mode_edit</i></button>\n"
                                 + "<td> <button type=\"button\" id=\"btnEliminarUsu\"  name=\"btnUsu\" value=\"" + doc + "\" class=\"waves-effect waves-light btn teal darken-2 eliminarU\"onmouseover=\"eliminarU()\"><i class=\"material-icons center\">delete</i></button></td>"

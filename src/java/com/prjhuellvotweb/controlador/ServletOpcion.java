@@ -17,7 +17,8 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Estiven Mazo Moreno
+ * @author Juan Estiven Mazo Moreno
+ * @actualiza Rocio Eliana Marquez Olarte
  */
 public class ServletOpcion extends HttpServlet {
 

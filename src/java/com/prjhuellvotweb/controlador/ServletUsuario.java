@@ -11,10 +11,7 @@ import com.prjhuellvotweb.modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.mail.MessagingException;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -25,7 +22,8 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Estiven Mazo
+ * @author Juan Estiven Mazo Moreno
+ * @actualiza Rocio Eliana Marquez Olarte
  */
 public class ServletUsuario extends HttpServlet {
 
@@ -76,7 +74,7 @@ public class ServletUsuario extends HttpServlet {
                 String sexo = request.getParameter("sexo");
                 String asunto="Registro éxitoso";
                 String contenido=nombre.toUpperCase()+"\n"+
-                        "Le informamos que usted se há registrado en el sistema de votación HuellVot\n"
+                        "Le informamos que usted se ha registrado en el sistema de votación HuellVot\n"
                         + "Estos son sus datos para iniciar sesión \n\n"
                         + "usuario: "+documento+"\n"+
                         "clave: "+documento;
@@ -88,7 +86,7 @@ public class ServletUsuario extends HttpServlet {
                 } else if (correo.isEmpty()) {
                     out.println("Ingrese correo.");
                 } else if (sexo.isEmpty()) {
-                    out.println("Elija sexo.");
+                    out.println("Elija el género.");
                 } else {
                     Usuario usu = new Usuario();
                     usu.setNumerodocumento(documento);
@@ -97,12 +95,12 @@ public class ServletUsuario extends HttpServlet {
                     usu.setSexo(sexo);
                     DAOUsuario dao = new DAOUsuario();
                     //validar cuantos usuarios estan registrados en la bd
-                    if (dao.validarCantidadUsuariosRegistrados() > 150) {
+                    if (dao.validarCantidadUsuariosRegistrados() > 164) {
                         response.setStatus(400);
                         out.println("¡Disculpa! \n"
                                 + "Pero has excedido el límite de registro de usuarios,\n"
                                 + "para seguir utilizando nuestros servicios contáctanos\n"
-                                + " en Medellin oficina HuellVot© tel:222-2222.\n");
+                                + " en Medellín oficina HuellVot© tel:222-2222.\n");
                         out.println("Desarrolladores:\n Eliana Marquez Olarte \nEstiven Mazo Moreno\nSergio Buitrago Ruiz\n");
                         out.println(formato.format(new Date()));
                         //validar que el usuario no exista
@@ -110,15 +108,16 @@ public class ServletUsuario extends HttpServlet {
                         if (dao.autenticarUsuario(documento) != null) {
                             String valordocu = dao.autenticarUsuario(documento).getNumerodocumento();
                             response.setStatus(400);
-                            out.print("Usuario ya existe.");
-                            System.out.println("Usuario con numero de documento: " + valordocu + " ya existe");
+                            out.print("Usuario con número de documento: " + valordocu + " ya existe.");
+                            System.out.println("Usuario con número de documento: " + valordocu + " ya existe.");
                         } else if (dao.registrarUsuario(usu) == true) {
                             out.print("Usuario registrado correctamente.");
                             try {
                                 EmailUtility.sendEmail(host, port, usuario, pass, correo, asunto, contenido);
                             } catch (MessagingException ex) {
                                 response.setStatus(400);
-                                out.print("¡Disculpa! ha ocurrido un error al confirmar tu correo electrónico."+ex);
+                                System.out.println("¡Disculpa! ha ocurrido un error al confirmar tu correo electrónico."+ex);
+                                out.print("\n¡Disculpa! ha ocurrido un error al confirmar tu correo electrónico.");
                             }
                             System.out.println("Usuario registrado correctamente.");
                         } else {

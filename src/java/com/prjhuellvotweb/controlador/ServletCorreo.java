@@ -19,7 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author pc
+ * @author Juan Estiven Mazo Moreno
+ * @actualiza Rocio Eliana Marquez Olarte
  */
 public class ServletCorreo extends HttpServlet {
 
@@ -69,7 +70,7 @@ public class ServletCorreo extends HttpServlet {
             } catch (MessagingException ex) {
                 response.setStatus(500);
                 out.println("No se ha sido enviado tu mensaje. Intenta nuevamente");
-                System.out.println("error en el email" + ex);
+                System.out.println("error en el correo: " + ex);
                 Logger.getLogger(ServletCorreo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
