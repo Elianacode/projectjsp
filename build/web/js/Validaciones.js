@@ -5,35 +5,6 @@
  * Proyecto   : Huellvot
  */
 
-function voto(bu) {
-    var idO = bu.value;
-    swal({title: "¿Seguro?", text: "DESEA VOTAR POR: " + bu.name + "?", type: "warning", showCancelButton: true, allowEscapeKey: false, cancelButtonText: "Cancelar", cancelButtonColor: "#fc7323", closeOnCancel: true, confirmButtonColor: "#238276", confirmButtonText: "Votar", closeOnConfirm: false, animation: "slide-from-top"}, function (isConfirm) {
-        if (isConfirm) {
-            $.ajax({method: "POST",
-                url: "../ServletVoto",
-                data: {Opcion: idO
-                },
-                beforeSend: function () {
-                    if (idO <= 0) {
-                        swal({title: "Error", type: "error", text: "Debe seleccionar una opción", timer: 4000, allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
-                    }
-                }, success: function () {
-                    swal({title: "Gracias por votar", text: "Te esperamos pronto.", type: "success", confirmButtonText: "Aceptar", confirmButtonColor: "#238276", allowEscapeKey: false}, function (isConfirm) {
-                        if (isConfirm) {
-                            window.location.assign('index.jsp');
-                            window.open("Administrar.jsp");
-                        }
-                    });
-                },
-                error: function (respuesta) {
-                    swal({title: "Oops",  text: respuesta.responseText, showConfirmButton: false, timer: 2000, allowEscapeKey: false});
-
-                }
-            });
-
-        }
-    });
-}
 // validacion para escribir solo  letras
 function sololetras() {
     if (((event.keyCode >= 33) && (event.keyCode < 65)) || ((event.keyCode > 90) && (event.keyCode < 97)) || ((event.keyCode > 122) && (event.keyCode < 193)))
@@ -52,26 +23,36 @@ function ingresar() {
     var clave = document.getElementById("clave").value;
     $.ajax({method: "POST",
         url: "../ServletLogin",
+        beforeSend: function () {
+            if (usuario === "" && clave === "") {
+                $("#usuario").focus();
+                swal({title: "Error", text: "Los campos están vacíos", type: "error", allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
+                $("#vldrusuario").html("Ingrese usuario.").slideDown(500);
+                $('#lblusu').css("color", "#f57c00");
+                return false;
+            }
+            if (usuario === "" || usuario.length === 0 || usuario === null) {
+                $("#vldrusuario").html("Ingrese usuario.").slideDown(500);
+                $('#lblusu').css("color", "#f57c00");
+                $("#usuario").focus();
+                return false;
+            } else {
+                $('#lblusu').css("color", "#009688");
+                $("#vldrusuario").html("").slideUp(30);
+            }
+            if (clave === null || clave.length === 0 || clave === "") {
+                $("#vldrdocumento").html("Ingrese clave.").slideDown(500);
+                $('#lblcla').css("color", "#f57c00");
+                $("#clave").focus();
+                return false;
+            } else {
+                $('#lblusu').css("color", "#009688");
+                $("#vldrdocumento").html("").slideUp(30);
+            }
+        },
         data: {usuario: $("#usuario").val(),
             documento: $("#clave").val()
                     //validacion de campos en el inicio
-        }, beforeSend: function () {
-            if (usuario === "" || usuario.length === 0 || usuario === null) {
-                $("#usuario").focus();
-                $("#vldrusuario").html("Ingrese usuario.").slideDown(500);
-                $('#lblusu').css("color", "#f57c00");
-            } else if (clave === null || clave.length === 0 || clave === "") {
-                $("#clave").focus();
-                $("#vldrdocumento").html("Ingrese clave.").slideDown(500);
-                $('#lblcla').css("color", "#f57c00");
-            } else {
-                $("#vldrusuario").html("").slideUp(300);
-                $("#vldrdocumento").html("").slideUp(300);
-            }
-
-            if (usuario === "" && clave === "") {
-                swal({title: "Error", text: "Los campos están vacíos", type: "error", allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
-            }
         }, success: function (msj) {
             if (msj === "superAdmin") {
                 window.location.assign('SuperAdmin.jsp');
@@ -132,13 +113,13 @@ function tabla() {
                 },
                 {extend: 'excel',
                     message: 'Reporte de usuarios creado por HuellVot (Versión 1.0)',
-                    text: 'Exportar a excel', exportOptions: {
+                    text: 'A excel', exportOptions: {
                         columns: [0, 1, 2, 3, 4]
                     }},
                 {extend: 'pdf',
                     background: 'simple text',
                     pageMargins: [40, 60, 40, 60],
-                    text: 'Exportar a PDF'
+                    text: 'A PDF'
                     , exportOptions: {
                         columns: [0, 1, 2, 3, 4]
                     },
@@ -421,7 +402,7 @@ function eliminarU() {
                     url: "../ServletEliU",
                     data: {documento: documento
                     }, error: function (respuesta) {
-                        swal({title: "Error", type: "error", text: respuesta.responseText, timer: 4000, allowEscapeKey: false, confirmButtonText: "Aceptar"});
+                        swal({title: "Error", type: "error", text: respuesta.responseText, timer: 4000, allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
 
                     }
                 })
@@ -441,7 +422,9 @@ function eliminarU() {
     });
 }//fin funcion eliminar usuario
 
+
 //////////////////////////////////// MODULO OPCIÓN /////////////////////////////
+
 
 //tabla Opcion
 function tablaOpcion() {
@@ -475,12 +458,12 @@ function tablaOpcion() {
 //                    columns: [ 0, 1, 2 ]
 //                } },
                 {extend: 'excel',
-                    text: 'Exportar a excel', exportOptions: {
+                    text: 'A excel', exportOptions: {
                         columns: [0, 1, 2]
                     }},
                 {extend: 'pdf',
                     message: 'Reporte de opciones creado desde HuellVot (Versión 1.0).',
-                    text: 'Exportar a PDF', exportOptions: {
+                    text: 'A PDF', exportOptions: {
                         columns: [0, 1, 2]
                     }}
 
@@ -701,7 +684,38 @@ function eliminarO() {
     });
 }//fin funcion eliminar opcion 
 
-//acerca de
+////////////////////////////////////- MODULO VOTACION - ///////////////////////////
+function voto(bu) {
+    var idO = bu.value;
+    swal({title: "¿Seguro?", text: "DESEA VOTAR POR: " + bu.name + "?", type: "warning", showCancelButton: true, allowEscapeKey: false, cancelButtonText: "Cancelar", cancelButtonColor: "#fc7323", closeOnCancel: true, confirmButtonColor: "#238276", confirmButtonText: "Votar", closeOnConfirm: false, animation: "slide-from-top"}, function (isConfirm) {
+        if (isConfirm) {
+            $.ajax({method: "POST",
+                url: "../ServletVoto",
+                data: {Opcion: idO
+                },
+                beforeSend: function () {
+                    if (idO <= 0) {
+                        swal({title: "Error", type: "error", text: "Debe seleccionar una opción", timer: 4000, allowEscapeKey: false, confirmButtonText: "Aceptar", confirmButtonColor: "#238276"});
+                    }
+                }, success: function () {
+                    swal({title: "Gracias por votar", text: "Te esperamos pronto.", type: "success", confirmButtonText: "Aceptar", confirmButtonColor: "#238276", allowEscapeKey: false}, function (isConfirm) {
+                        if (isConfirm) {
+                            window.location.assign('index.jsp');
+                            window.open("Administrar.jsp");
+                        }
+                    });
+                },
+                error: function (respuesta) {
+                    swal({title: "Oops", text: respuesta.responseText, showConfirmButton: false, timer: 2000, allowEscapeKey: false});
+
+                }
+            });
+
+        }
+    });
+}
+
+////////////////////////////////////-ACERCA DE - ///////////////////////////
 function acercade() {
     $("#acercade").click(function () {
         $('#modalacercade').openModal();
@@ -709,7 +723,7 @@ function acercade() {
 
 }
 
-//contactanos
+////////////////////////////////////-CONTACTANOS - ///////////////////////////
 function contactanos() {
     var correoC = document.getElementById("correoCont").value;
     var nombreC = document.getElementById("nomCont").value;
@@ -775,13 +789,9 @@ function contactanos() {
     ).done(function () {
 
     });
-
-
 }
-//mostrar y ocultar modulos 
+////////////////////////////////////- mostrar y ocultar modulos- ///////////////////////////
 $(document).ready(function () {
-
-       
     cache:false;
     $(".formUsuario").hide();
     $(".formOpcion").hide();
@@ -907,7 +917,12 @@ $(document).ready(function () {
                             ]
                         },
                         options: {
-                            responsive: true
+                            responsive: true,
+                            hover: {
+                                // Overrides the global setting
+                                mode: 'label' + '%'
+                            }
+
                         }
                     };
                     var canvas = document.getElementById('chart').getContext('2d');

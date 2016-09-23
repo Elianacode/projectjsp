@@ -35,24 +35,23 @@ public class ServletEliU extends HttpServlet {
         //Preguntar por la sesion del usuario admin
 //        HttpSession sessionOk = request.getSession(true);
 //        if (sessionOk.getAttribute("admin") != null) {
-            response.setContentType("text/html;charset=UTF-8");
-            try (PrintWriter out = response.getWriter()) {
-                /* TODO output your page here. You may use following sample code. */
-                String documento = request.getParameter("documento");
-                Usuario usu = new Usuario();
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            String documento = request.getParameter("documento");
+            Usuario usu = new Usuario();
 
-                usu.setNumerodocumento(documento);
+            usu.setNumerodocumento(documento);
 
-                DAOUsuario dao = new DAOUsuario();
-                //validar que el usuario no exista
-                if (dao.eliminarUsuario(usu)== true) {
-                    out.print("Usuario eliminado correctamente.");
-                } 
-                else {
-                    out.print("Error al eliminar Usuario.");
-
-                }
+            DAOUsuario dao = new DAOUsuario();
+            //validar que el usuario no exista
+            if (dao.eliminarUsuario(usu) == true) {
+                out.print("Usuario eliminado correctamente.");
+            } else {
+                response.setStatus(400);
+                out.print("El usuario no se puede eliminar, ya realizo la votación.");
             }
+        }
 //        }else{
 //        sessionOk.invalidate();
 //        response.sendRedirect("index.jsp");

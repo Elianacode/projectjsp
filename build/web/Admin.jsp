@@ -228,17 +228,17 @@
 
             <!-- Tabla opción-->
             <div class="row hoverable">
-                <div class="col m12" id="tabOp">
+                <div class="col s12 m12 l12" id="tabOp">
                 </div>
             </div> 
             <!-- modal para modificar datos de Opción-->
             <div class="row ">
-                <div class="col m12">
+                <div class="col s12 m12 l12">
                     <div id="modal2" class="modal">
                         <div class="modal-content">
                             <h4 class="center-align">MODIFICAR OPCIÓN</h4>
                             <div id="modalOpcion">  </div>
-                            <div class="col m12 s12">
+                            <div class="col s12 m12 l12">
                                 <div class="modal-footer">
                                     <a class=" modal-action modal-close waves-effect waves-red btn-flat hoverable " id="cancelarMO">Cancelar</a>
                                     <button type="button" id="btnModOpc" name="btnOpc" value="modificarOpc" class="waves-effect  waves-light btn teal darken-2" onclick="actualizarO()">Modificar<i class="material-icons right ">mode_edit</i></button>
@@ -266,7 +266,7 @@
                         <button type="button" class="waves-effect waves-light btn teal darken-2" id="msjReport">Reporte resultados<i class="material-icons right">add</i></button>
                     </div>
                     <!-- Modal mensaje PDF-->
-                    <div class="col m12">
+                    <div class="col s12 m12 l12">
                         <div id="modalReport" class="modal">
                             <div class="modal-content">
                                 <h4 class="center-align">REPORTE</h4>
@@ -298,14 +298,14 @@
                     <div id="modalacercade" class="modal  modal-fixed-footer ">
                         <div class="modal-content">
                             <h3 class="center-align" style="background-color:#fc7323; z-index: -1; color:white">Acerca de</h3>
-                            <h5 style="color:#fc7323;">Versión Larga... </h5>
+                           <!-- <h5 style="color:#fc7323;">Versión Larga... </h5>
                             <label class=" valign-wrapper" style="text-align: justify; font-size:15px;"> 
                                 Huellvot© es un sitio web resultado del proyecto formativo creado en el SENA por los aprendices Juan Estiven Mazo Moreno, Rocio Eliana Marquez Olarte, Sergio Alberto Buitrago pertenecientes al programa de Análisis y desarrollo de sistemas de información (ADSI); el cual se realizó en el Centro Textil y de Gestión Industrial (CTGI) desde el 7 de abril de 2014 hasta el 7 de abril de 2016, guiado por los instructores Harold Mauricio Gomez Zapata, Durley Cecilia Lopez Alzate, Lee Jared Escobar Gomez, Johnattan Jaramillo Gomez, Edwi Alexander Patiño Palacio, Hernan Dario Solano Salgado, Edwin Waldir Restrepo Henao, Diego Leon Ramirez Bedoya, Eldrin William Berrio Leon Johana Cecilia Gutierrez Florez, Robinson Restrepo Muñoz, Gloria Cecilia Tobon Gil, Juan Camilo Zapata Sanchez.
                                 El sitio web Huellvot© consiste en un sistema que permitirá realizar el proceso de votación por diferentes tipos de opciones, ademas de versatil el sitio web tiene una interfaz para todo tipo de usuarios, permite generar los informes resultados y estadísticas de la votaciòn desde el mismo momento en que se termina el proceso  
                             </label>
-                            <h5 style="color:#fc7323;">Versión Corta... </h5> 
-                            <label class=" valign-wrapper" style="text-align: justify; font-size:15px;"> 
-                                Huellvot© es un sitio web resultado del proyecto formativo creado en el SENA por los aprendices Juan Estiven Mazo Moreno, Rocio Eliana Marquez Olarte, Sergio Alberto Buitrago pertenecientes al programa de Análisis y desarrollo de sistemas de información (ADSI), consiste en un sistema que permitirá realizar el proceso de votación por diferentes tipos de opciones, ademas de versatil el sitio web tiene una interfaz para todo tipo de usuarios, permite generar los informes resultados y estadísticas de la votaciòn desde el mismo momento en que se termina el proceso.
+                            <h5 style="color:#fc7323;">Versión Corta... </h5> -->
+                           <label class=" valign-wrapper" style="text-align: justify; font-size:15px;"> <br><br>
+                             HuellVot© es un sitio Web resultado del proyecto formativo creado en el SENA por los aprendices Juan Estiven Mazo Moreno, Rocio Eliana Marquez Olarte, Sergio Alberto Buitrago pertenecientes al programa de Análisis y desarrollo de sistemas de información (ADSI), consiste en un sistema que permitirá realizar el proceso de votación por diferentes tipos de opciones, además de versátil el sitio Web tiene una interfaz para todo tipo de usuarios, permite generar los informes resultados y estadísticas de la votación desde el mismo momento en que se termina el proceso.
                             </label>
                         </div>
                         <div class="modal-footer">

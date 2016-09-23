@@ -76,8 +76,10 @@ public class ServletUsuario extends HttpServlet {
                 String contenido=nombre.toUpperCase()+"\n"+
                         "Le informamos que usted se ha registrado en el sistema de votación HuellVot\n"
                         + "Estos son sus datos para iniciar sesión \n\n"
-                        + "usuario: "+documento+"\n"+
-                        "clave: "+documento;
+                        + "Usuario: "+documento+"\n"+
+                        "Clave: "+documento+"\n"+
+                        "Medellín oficina HuellVot©"+
+                        "tel:222-2222";
 
                 if (documento.isEmpty()) {
                     out.println("El número de documento es requerido.");

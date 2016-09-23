@@ -38,7 +38,7 @@ import javax.servlet.http.HttpSession;
 /**
  *
  * @author Juan Estiven Mazo Moreno
- * @actualiza Rocio Eliana Marquez Olarte 
+ * @actualiza Rocio Eliana Marquez Olarte
  */
 @WebServlet(urlPatterns = {"/Reporte"})
 public class PDF extends HttpServlet {
@@ -54,14 +54,14 @@ public class PDF extends HttpServlet {
             OutputStream out = response.getOutputStream();
             String texto = request.getParameter("report");
             //texto = "Reporte de los proyectos Sena CTGI (Centro tecnologico de gestion industrial) donde se dan a conocer"
-             //                   + " los nombres de los proyectos y cantidad de votos obtenidos para cada proyecto.";
+            //                   + " los nombres de los proyectos y cantidad de votos obtenidos para cada proyecto.";
             try {
                 Connection con = Conexion.conectar("mysql");
                 DAOVoto dao = new DAOVoto();
-                List<List> lista =dao.estadisticaNumeroVotos();
+                List<List> lista = dao.estadisticaNumeroVotos();
                 Voto t = dao.contarVotos();
                 int to = t.getIdUsuario();
-                if (!lista.isEmpty()) {
+                if (!lista.isEmpty() && lista.size() > 0) {
                     try {
                         //programar pdf
                         Document documento = new Document();
@@ -72,7 +72,7 @@ public class PDF extends HttpServlet {
                         Paragraph par2 = new Paragraph();
                         Paragraph par4 = new Paragraph();
                         //agregar una imagen logo sena al pdf
-                        Image imagenes = Image.getInstance("C:\\Users\\pc\\Desktop\\PrjHuellVotWeb\\web\\Multimedia\\reportes.png");
+                        Image imagenes = Image.getInstance(getServletContext().getRealPath("")+"/Multimedia/reportes.png");
                         //Centrar la imagen
                         imagenes.setAlignment(Element.ALIGN_CENTER);
                         //tamaño de la imagen
@@ -148,21 +148,22 @@ public class PDF extends HttpServlet {
                         }
                         PdfPCell c1 = new PdfPCell(new Paragraph("Total Votos: ", fondescripcion));
                         c1.setColspan(4);
-                        PdfPCell c2 = new PdfPCell(new Paragraph(""+to, fondescripcion));
-                        
+                        PdfPCell c2 = new PdfPCell(new Paragraph("" + to, fondescripcion));
+
                         c1.setHorizontalAlignment(Element.ALIGN_CENTER);
                         c2.setHorizontalAlignment(Element.ALIGN_CENTER);
-                        
+
                         c1.setPadding(4.0f);
                         c2.setPadding(4.0f);
-                        
+
                         tabla.addCell(c1);
                         tabla.addCell(c2);
-                        
+
                         //Agrega la tabla a el documento
                         documento.add(tabla);
+                        //agregar fecha
                         Font fonfecha = new Font(Font.getFamily("Roboto"), 12, Font.NORMAL, BaseColor.LIGHT_GRAY);
-                                               
+
                         par4.add(new Phrase("Expedido por HuellVot", fonfecha));
                         DateFormat formato = DateFormat.getDateInstance(DateFormat.FULL);
                         par4.add(new Paragraph(formato.format(new Date())));
@@ -174,6 +175,56 @@ public class PDF extends HttpServlet {
                     } catch (DocumentException | IOException e) {
                         e.getMessage();
                         System.out.println("Error al generar el reporte PDF" + e);
+                    }
+
+                } else {
+                    try {
+                        Document documento = new Document();
+                        PdfWriter.getInstance(documento, out);// salida del cocumento en pdf
+                        //abrir documento
+                        documento.open();
+                        System.out.println("no hat datos");
+                        //agregar una imagen logo sena al pdf
+                        Image imagenes = Image.getInstance("C:\\Users\\pc\\Desktop\\PrjHuellVotWeb\\web\\Multimedia\\reportes.png");
+                        //Centrar la imagen
+                        imagenes.setAlignment(Element.ALIGN_CENTER);
+                        //tamaño de la imagen
+                        imagenes.scaleToFit(530, 520);
+                        //agg imagen al documento F:\\Documentos\\yo\\huellvot 2 17-06-2016\\PrjHuellVotWeb\\web\\iCO.png
+                        //documento.add(imghuellvot);
+                        documento.add(imagenes);
+                        Paragraph par1 = new Paragraph();
+                        Paragraph par2 = new Paragraph();
+                        //Agg salto de linea
+                        par1.add(new Phrase(Chunk.NEWLINE));
+                        par1.add(new Phrase(Chunk.NEWLINE));
+
+                        //fuente del pdf, tipo de fuente famimilia tamaño de letra
+                        //Importar ttf que contiene el tipo de letra
+                        FontFactory.register("C:\\Users\\pc\\Desktop\\PrjHuellVotWeb\\web\\fonts\\roboto\\Roboto-Bold.ttf", "Roboto");
+                        //Font fondescripcion = FontFactory.getFont("Roboto");
+                        Font fondescripcion = new Font(Font.getFamily("Roboto"), 16, Font.NORMAL, BaseColor.BLACK);
+                        //texto de la descripcion
+                        par1.add(new Phrase("¡lo sentimos pero no hay datos para mostrar.!", fondescripcion));
+                        //justificar descripcion
+                        par1.setAlignment(Element.ALIGN_CENTER);
+                        //Agg salto de linea
+                        par1.add(new Phrase(Chunk.NEWLINE));
+                        par1.add(new Phrase(Chunk.NEWLINE));
+                        //agregar descripcion al documento
+                        documento.add(par1);//agregar todas las propiedades de la descripción
+                        //agregar fecha
+                        Font fonfecha = new Font(Font.getFamily("Roboto"), 12, Font.NORMAL, BaseColor.LIGHT_GRAY);
+
+                        par2.add(new Phrase("Expedido por HuellVot", fonfecha));
+                        DateFormat formato = DateFormat.getDateInstance(DateFormat.FULL);
+                        par2.add(new Paragraph(formato.format(new Date())));
+                        documento.add(par2);
+                        //cerrar el documento
+                        documento.close();
+                    } catch (DocumentException ex) {
+                        ex.getMessage();
+                        System.out.println("Error al generar el reporte PDF sin datos registrados" + ex);
                     }
 
                 }

@@ -119,7 +119,7 @@ public class DAOUsuario extends Conexion {
             sql = "SELECT * FROM usuario WHERE documento=?";
             pst = con.prepareStatement(sql);
             pst.setString(1, numeroDocumento);
-            rs = pst.executeQuery();     
+            rs = pst.executeQuery();
             while (rs.next()) {
                 llenar();
                 return usuario;
@@ -212,7 +212,7 @@ public class DAOUsuario extends Conexion {
 //            u.setId(cantidad);
 //            System.out.println("valor de la consulta" + u.getId());
         } catch (Exception e) {
-            System.out.println("error validar la Cantidad de Usuario sRegistrados" + e);
+            System.out.println("error validar la Cantidad de Usuario Registrados" + e);
         } finally {
             try {
                 pst.close();
@@ -224,6 +224,27 @@ public class DAOUsuario extends Conexion {
                 return cantidad;
             }
         }
-
     }
+
+    public Usuario consultarNombreUsuario(String id) {
+        Connection con = Conexion.conectar("mysql");
+        try {
+            sql = "SELECT * FROM usuario WHERE idu=?";
+            pst = con.prepareStatement(sql);
+            pst.setString(1,id);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                llenar();
+                return usuario;
+            }
+            pst.close();
+            rs.close();
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println("error al intentar consultar nombre de usuario: " + e.getMessage());
+        }
+        return null;
+    }
+
 }

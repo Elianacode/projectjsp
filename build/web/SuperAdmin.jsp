@@ -115,6 +115,11 @@
                                     <label for="Categoria">Categoria</label>
                                 </p>
                             </div>
+                            <div class="input-field col s12 m6">
+                        <input id="nomU" type="text" class="" name="nombre" required=""  length="70" onkeypress="sololetras()" onpaste=" return false">
+                        <label id="lblnm" for="nomU">Ruta para guardar:</label>
+                        <div id="vldrNombre" style="color:#f57c00;;"> </div>
+                    </div>
                         </div>
                     </div>
                     <div class="row ">

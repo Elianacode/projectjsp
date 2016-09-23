@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Estiven Mazo Moreno 
+ * @author Estiven Mazo Moreno
  * @actualiza Rocio Eliana Marquez Olarte
  */
 public class ServletLogin extends HttpServlet {
@@ -42,7 +42,7 @@ public class ServletLogin extends HttpServlet {
             String usuario = request.getParameter("usuario").trim();
             String documento = request.getParameter("documento").trim();
             HttpSession sessionOk = request.getSession(true);
-            DAOConfiguracion daoc = new DAOConfiguracion();            
+            DAOConfiguracion daoc = new DAOConfiguracion();
             int id;
             int sesionAdmin = 0;
             //validar  que los campos del formulario login  no esten vacios
@@ -50,12 +50,12 @@ public class ServletLogin extends HttpServlet {
             }//ingreso de Admin 
             else if (usuario.equals("root") && documento.equals("qwerty")) {
                 //Verificar si ya hay configuración
-                if (daoc.contar() == 0){
-                out.print("superAdmin");
-                }else{
-                sesionAdmin = 1;
-                sessionOk.setAttribute("admin", sesionAdmin);
-                out.print("admin");
+                if (daoc.contar() == 0) {
+                    out.print("superAdmin");
+                } else {
+                    sesionAdmin = 1;
+                    sessionOk.setAttribute("admin", sesionAdmin);
+                    out.print("admin");
                 }
                 //validar usuariorio y clave
             } else if (!usuario.equals(documento)) {
@@ -72,20 +72,20 @@ public class ServletLogin extends HttpServlet {
                     //validar que el usuario no ha realizo la votacion                    
                     if (v.valid(id)) {
                         response.setStatus(400);
-                        out.print("El usuario con documento "+documento+" ya realizó la votación.");
+                        out.print("El usuario con documento " + documento + " ya realizó la votación.");
                         System.out.println("Usuario con id:" + id + " ya voto.");
                     } else {
                         //manejo de session de usuario
-                        sessionOk.setMaxInactiveInterval(60);
-                        sessionOk.setAttribute("votante", id);                        
+                        sessionOk.setMaxInactiveInterval(120);
+                        sessionOk.setAttribute("votante", id);
                         out.print("votacion");
                         System.out.println("Usuario con id:" + id + " puede votar.");
                     }
-                    
-                } else {                    
+
+                } else {
                     //error si el Mysql NO esta iniciado.
                     response.setStatus(500);
-                    out.println("Error en el servidor. Usuario con documento "+documento+" no encontrado.");
+                    out.println("Oop! ha ocurrido un error en el servidor,Usuario con documento " + documento + " no encontrado.");
                 }
             }
         }
